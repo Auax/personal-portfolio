@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
+import { MouseEvent } from "react";
+import { useRouter } from "next/navigation";
+import gsap from "gsap";
 
 interface ProjectCardProps {
+  slug: string;
   src: string;
   alt: string;
   title?: string;
@@ -22,12 +29,48 @@ function TagList({ tags }: { tags: readonly string[] }) {
   );
 }
 
-export default function ProjectCard({ src, alt, tags, featured = false, className = "", title = "" }: ProjectCardProps) {
+export default function ProjectCard({ slug, src, alt, tags, featured = false, className = "", title = "" }: ProjectCardProps) {
+  const router = useRouter();
+
+  const handleNavigate = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    sessionStorage.setItem("route-transition", "1");
+
+    const page = document.querySelector("[data-page-transition]");
+    if (!page) {
+      router.push(`/projects/${slug}`);
+      return;
+    }
+
+    gsap.to(page, {
+      opacity: 0,
+      y: -16,
+      filter: "blur(10px)",
+      duration: 0.35,
+      ease: "power2.out",
+      onComplete: () => router.push(`/projects/${slug}`),
+    });
+  };
+
   return (
-    <div
+    <Link
+      href={`/projects/${slug}`}
+      onClick={handleNavigate}
       data-animate={featured ? "featured-project" : "project-card"}
-      className={`relative rounded-2xl overflow-hidden group ${featured ? "w-full aspect-[16/8]" : "aspect-[4/3]"
-        } ${className}`}
+      className={`relative rounded-2xl overflow-hidden group block cursor-pointer ${
+        featured ? "w-full md:aspect-[16/8] aspect-[4/3]" : "aspect-[4/3]"
+      } ${className}`}
     >
       <Image
         src={src}
@@ -41,6 +84,6 @@ export default function ProjectCard({ src, alt, tags, featured = false, classNam
         {title && <span className="text-lg font-medium">— {title}</span>}
         <TagList tags={tags} />
       </div>
-    </div>
+    </Link>
   );
 }

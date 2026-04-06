@@ -16,9 +16,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Ibai Fariña — Full-Stack Developer",
+  title: "Ibai Farina — Full-Stack Developer",
   description:
-    "Portfolio of Ibai Fariña, a full-stack developer specializing in NLP, deep learning, and web design.",
+    "Portfolio of Ibai Farina, a full-stack developer specializing in NLP, deep learning, and web design.",
 };
 
 export default function RootLayout({

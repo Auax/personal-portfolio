@@ -17,12 +17,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Portfolio() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
       duration: .7,
       smoothWheel: true,
     });
+    lenisRef.current = lenis;
 
     let rafId = 0;
     const onFrame = (time: number) => {
@@ -36,9 +38,22 @@ export default function Portfolio() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      lenisRef.current = null;
       lenis.destroy();
     };
   }, []);
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(el, { offset: -96 });
+      return;
+    }
+
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
     useGSAP(
         () => {
@@ -94,7 +109,8 @@ export default function Portfolio() {
               const featuredCard = containerRef.current?.querySelector<HTMLElement>(
                 "[data-animate='featured-project']"
             );
-            if (featuredCard) {
+            const isMdUp = window.matchMedia("(min-width: 768px)").matches;
+            if (featuredCard && isMdUp) {
                 gsap.fromTo(
                     featuredCard,
                     { scale: .8, y: 0, opacity: 0, filter: "blur(30px)" },
@@ -109,7 +125,6 @@ export default function Portfolio() {
                             start: "bottom 80%",
                             end: "bottom top",
                             scrub: true,
-                            // markers: true,
                         },
                     }
                 );
@@ -171,8 +186,12 @@ export default function Portfolio() {
     );
 
     return (
-        <div ref={containerRef} className="flex flex-col min-h-screen bg-black">
-            <NavBar />
+        <div
+            ref={containerRef}
+            data-page-transition
+            className="flex flex-col min-h-screen bg-black"
+        >
+            <NavBar onNavigate={scrollToId} />
             <HeroSection />
             <ProjectsSection />
             <ExperienceSection />
