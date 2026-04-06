@@ -77,7 +77,7 @@ export default function Portfolio() {
             );
             if (heroBg) {
                 gsap.to(heroBg, {
-                    yPercent: -20,
+                    yPercent: 20,
                     ease: "none",
                     scrollTrigger: {
                         trigger: heroBg.parentElement,
