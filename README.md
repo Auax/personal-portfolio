@@ -1,104 +1,72 @@
-# Portfolio Design
+<div align="center">
+  
+# ✨ Portfolio Design
 
-A dark, animation-rich personal portfolio built with Next.js App Router, Tailwind CSS, GSAP, and Lenis smooth scrolling.
+*A dark, animation-rich personal portfolio built for performance and fluidity.*
 
-The project includes:
-- A desktop-first landing page with responsive mobile adaptations
-- Project cards with route transitions to detail pages
-- Scroll-triggered animations and parallax effects
-- Mobile fullscreen menu behavior
-- Smooth scrolling shared across home and project detail pages
+<br />
 
-## Tech Stack
+<img width="100%" alt="Portfolio Preview" src="https://github.com/user-attachments/assets/cdcc24da-c967-4bed-9cf0-592ab55436e1" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" />
 
-- Next.js 16 (App Router)
-- React 19 + TypeScript
-- Tailwind CSS v4
-- GSAP (`gsap`, `@gsap/react`, `ScrollTrigger`)
-- Lenis smooth scrolling
-- `next/font` with Geist (body) and Instrument Serif (headings)
+<br />
 
-## Project Structure
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![GSAP](https://img.shields.io/badge/GSAP-Animations-88CE02?style=flat-square&logo=greensock)](https://gsap.com/)
 
-```txt
+</div>
+
+---
+
+## 🎯 Overview
+
+This project is a high-performance, visually engaging personal portfolio. It prioritizes smooth interactions, utilizing a tightly integrated stack of GSAP for complex animations and Lenis for seamless scroll hijacking.
+
+**Key Features:**
+- 🖥️ **Responsive Design:** Desktop-first landing page with tailored mobile adaptations.
+- 🚀 **Dynamic Routing:** Project cards feature seamless route transitions to detail pages.
+- ✨ **Rich Animations:** Scroll-triggered reveals, parallax effects, and animated mobile overlays.
+- 🌊 **Fluid Scrolling:** Ticker-driven smooth scrolling shared across all routes.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework:** Next.js 16 (App Router)
+* **Core:** React 19 + TypeScript
+* **Styling:** Tailwind CSS v4
+* **Animation:** GSAP (`gsap`, `@gsap/react`, `ScrollTrigger`)
+* **Scrolling:** Studio Freight Lenis
+* **Typography:** `next/font` (Geist for body, Instrument Serif for headings)
+
+---
+
+## 📂 Project Structure
+
+```text
 app/
-  layout.tsx                 # Root layout, metadata, font variables
-  page.tsx                   # Home entry point
-  projects/[slug]/page.tsx   # Project detail page
+ ├── layout.tsx                 # Root layout, metadata, font variables
+ ├── page.tsx                   # Home entry point
+ └── projects/[slug]/page.tsx   # Project detail page
 
 components/
-  Portfolio.tsx              # Main home composition + GSAP section animation wiring
-  SmoothScroll.tsx           # Shared Lenis setup (GSAP ticker-driven)
-  NavBar.tsx
-  HeroSection.tsx
-  ProjectsSection.tsx
-  ProjectCard.tsx
-  ExperienceSection.tsx
-  ExperienceCard.tsx
-  AboutSection.tsx
-  ContactSection.tsx
-  RouteTransitionIn.tsx      # Detail page entry transition
+ ├── Portfolio.tsx              # Main home composition + GSAP section wiring
+ ├── SmoothScroll.tsx           # Shared Lenis setup (GSAP ticker-driven)
+ ├── RouteTransitionIn.tsx      # Detail page entry transition
+ ├── NavBar.tsx                 # Desktop & mobile navigation
+ ├── HeroSection.tsx
+ ├── ProjectsSection.tsx
+ ├── ProjectCard.tsx
+ ├── ExperienceSection.tsx
+ ├── ExperienceCard.tsx
+ ├── AboutSection.tsx
+ └── ContactSection.tsx
 
 lib/
-  data.ts                    # Projects, experience and skills content
-```
+ └── data.ts                    # Projects, experience, and skills content
 
-## Getting Started
-
-### 1) Install dependencies
-
-```bash
-pnpm install
-```
-
-### 2) Run the app
-
-```bash
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-### 3) Production checks
-
-```bash
-pnpm lint
-pnpm build
-pnpm start
-```
-
-## Key Behaviors
-
-### Smooth scrolling
-- `SmoothScroll.tsx` is the single Lenis source per route.
-- Lenis is driven by GSAP ticker to avoid competing RAF loops.
-- `ScrollTrigger.update` is synced on Lenis scroll events.
-
-### Scroll animations
-- Scroll reveals and parallax are configured in `Portfolio.tsx`.
-- Featured project animation is disabled on smaller breakpoints.
-
-### Navigation
-- Desktop: inline anchor navigation.
-- Mobile: hamburger menu with animated overlay.
-- Section jumps are routed through the smooth scroll controller when available.
-
-### Projects
-- Project cards are clickable and route to `/projects/[slug]`.
-- Route transitions are animated for smoother page changes.
-
-## Content and Assets
-
-- Hero background image: `public/background.jpg`
-- Project images: `public/projects/*`
-- Project and section content lives in `lib/data.ts`
-
-## Notes for Future Changes
-
-- Keep `SmoothScroll.tsx` as the only Lenis initializer per page route.
-- If adding new scroll-heavy sections, register animations in `Portfolio.tsx` (home) or the specific route component.
-- For accessibility, consider conditionally reducing animation intensity using `prefers-reduced-motion`.
-
-## License
-
-Private project.
+public/
+ ├── background.jpg             # Hero background asset
+ └── projects/                  # Project imagery
