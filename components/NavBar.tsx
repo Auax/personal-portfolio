@@ -88,7 +88,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
     <>
       <nav className="fixed top-0 left-1/2 -translate-x-1/2 w-full z-[80] sm:container">
         <div
-          className={`flex justify-between items-center mx-auto w-full px-8 sm:px-10 py-4 mt-0 sm:mt-4 rounded-full transition-all duration-300 ${
+          className={`flex justify-between items-center mx-auto w-full px-8 sm:px-10 py-4 mt-0 sm:mt-4 sm:rounded-full transition-all duration-300 ${
             hasScrolled
               ? "backdrop-blur-md bg-black/40 border border-white/5"
               : "bg-transparent border border-transparent"

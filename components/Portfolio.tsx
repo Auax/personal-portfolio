@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Lenis from "lenis";
 
 import NavBar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
@@ -17,38 +16,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Portfolio() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const lenisRef = useRef<Lenis | null>(null);
-
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: .7,
-      smoothWheel: true,
-    });
-    lenisRef.current = lenis;
-
-    let rafId = 0;
-    const onFrame = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(onFrame);
-    };
-
-    rafId = requestAnimationFrame(onFrame);
-
-    lenis.on("scroll", ScrollTrigger.update);
-
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenisRef.current = null;
-      lenis.destroy();
-    };
-  }, []);
 
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
 
-    if (lenisRef.current) {
-      lenisRef.current.scrollTo(el, { offset: -96 });
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (target: Element, opts?: unknown) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo(el, { offset: -96 });
       return;
     }
 
