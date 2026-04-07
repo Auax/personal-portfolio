@@ -18,7 +18,7 @@ export default function HeroSection() {
 
             <div className="relative z-10 w-full container mx-auto pt-32 pb-24">
                 <div data-animate="hero-text" className="flex flex-col gap-4">
-                    <h1 className="text-center text-7xl md:text-7xl lg:text-8xl font-serif leading-[1.05] tracking-tight">
+                    <h1 id="hero-text" className="text-center text-7xl md:text-7xl lg:text-8xl font-serif leading-[1.05] tracking-tight">
                         Hi! I&apos;m a <em className="italic">full-stack</em>
                         <br />
                         web developer

@@ -6,35 +6,38 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface SmoothScrollProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 export default function SmoothScroll({ children }: SmoothScrollProps) {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 0.7,
-      smoothWheel: true,
-      syncTouch: true,
-      touchMultiplier: 1,
-    });
+    useEffect(() => {
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReducedMotion) return;
 
-    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+        const lenis = new Lenis({
+            duration: 0.7,
+            smoothWheel: true,
+            syncTouch: false,
+            touchMultiplier: 1,
+        });
 
-    gsap.registerPlugin(ScrollTrigger);
-    lenis.on("scroll", ScrollTrigger.update);
-    const tick = (time: number) => {
-      lenis.raf(time * 1000);
-    };
-    gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
-    ScrollTrigger.refresh();
+        (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
-    return () => {
-      delete (window as unknown as { __lenis?: Lenis }).__lenis;
-      gsap.ticker.remove(tick);
-      lenis.destroy();
-    };
-  }, []);
+        gsap.registerPlugin(ScrollTrigger);
+        lenis.on("scroll", ScrollTrigger.update);
+        const tick = (time: number) => {
+            lenis.raf(time * 1000);
+        };
+        gsap.ticker.add(tick);
+        gsap.ticker.lagSmoothing(0);
+        ScrollTrigger.refresh();
 
-  return <>{children}</>;
+        return () => {
+            delete (window as unknown as { __lenis?: Lenis }).__lenis;
+            gsap.ticker.remove(tick);
+            lenis.destroy();
+        };
+    }, []);
+
+    return <>{children}</>;
 }
