@@ -15,7 +15,7 @@ export default function RouteTransitionIn() {
 
     gsap.fromTo(
       page,
-      { opacity: 0, y: 16, filter: "blur(10px)" },
+      { opacity: 0, filter: "blur(10px)" },
       { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power2.out" }
     );
   }, []);

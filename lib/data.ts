@@ -1,8 +1,25 @@
-export const projects = [
+export interface Project {
+  slug: string;
+  title: string;
+  src: string;
+  src_detail: string;
+  alt: string;
+  tags: string[];
+  featured?: boolean;
+  description: string;
+  year: string;
+  role: string;
+  stack: string[];
+  github?: string;
+  website?: string;
+}
+
+export const projects: Project[] = [
   {
     slug: "freelance-website",
     title: "Freelance Website",
     src: "/projects/project1.jpg",
+    src_detail: "/projects/project1-detail.jpg",
     alt: "Freelance Next.js website",
     tags: ["Next.js", "Tailwind CSS", "TypeScript"],
     featured: true,
@@ -14,19 +31,25 @@ export const projects = [
   },
   {
     slug: "omnitrack",
-    src: "/projects/project2.jpg",
+    src: "/projects/omnitrack.png",
+    src_detail: "/projects/omnitrack-detail.png",
     alt: "OmniTrack app",
     tags: ["Swift", "APIs", "iOS"],
     title: "Omnitrack",
     description:
-      "A mobile app for tracking and managing movies, TV shows and anime, with a focus on user-friendly interface.",
+      "A personal project to track currently watching movies, TV shows and anime, with a focus on user-friendly interface.\
+      I built it to learn SwiftUI and Swift and improve UI/UX design skills. It's a combinations of IMDB, TMDB and Anilist APIs integrated to get\
+      the latest information about the movies, TV shows and anime.",
     year: "2026",
     role: "Developer & Designer",
     stack: ["Swift", "SwiftUI"],
+    github: "https://github.com/auax/Omnitrack",
+    website: "https://omnitrack.app",
   },
   {
     slug: "eclipse-visualization",
     src: "/projects/project3.jpg",
+    src_detail: "/projects/project3-detail.jpg",
     alt: "Eclipse visualization project",
     tags: ["NPL", "Deep Learning", "Web Design"],
     title: "Eclipse Visualization",
@@ -39,6 +62,7 @@ export const projects = [
   {
     slug: "generative-art",
     src: "/projects/project4.jpg",
+    src_detail: "/projects/project4-detail.jpg",
     alt: "Generative art project",
     tags: ["NPL", "Deep Learning", "Web Design"],
     title: "Generative Art Engine",
@@ -51,6 +75,7 @@ export const projects = [
   {
     slug: "medical-imaging",
     src: "/projects/project5.jpg",
+    src_detail: "/projects/project5-detail.jpg",
     alt: "Medical imaging project",
     tags: ["NPL", "Deep Learning", "Web Design"],
     title: "Medical Imaging AI",
@@ -62,7 +87,7 @@ export const projects = [
   },
 ] as const;
 
-export type Project = (typeof projects)[number];
+// export type Project = (typeof projects)[number];
 
 export const experiences = [
   {
