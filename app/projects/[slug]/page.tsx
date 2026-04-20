@@ -55,7 +55,7 @@ export default async function ProjectPage({
                         alt={project.alt}
                         fill
                         priority
-                        className="object-cover object-top"
+                        className="object-cover object-top opacity-70"
                         sizes="100vw"
                         unoptimized
                     />
@@ -112,7 +112,7 @@ export default async function ProjectPage({
                         {project.github && (
                             <a href={project.github} target="_blank" rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white hover:bg-neutral-300
-                             transition-colors text-black text-sm font-semibold px-4 py-2">
+                             transition-colors text-black text-sm font-medium px-4 py-2">
                                 GitHub
                                 <Image src="/icons/github/GitHub_Invertocat_Black.svg" alt="GitHub" width={20} height={20} />
                             </a>
@@ -120,7 +120,7 @@ export default async function ProjectPage({
                          {project.website && (
                             <a href={project.website} target="_blank" rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 group rounded-full bg-white hover:bg-neutral-300
-                             transition-colors text-black text-sm font-semibold px-4 py-2">
+                             transition-colors text-black text-sm font-medium px-4 py-2">
                                 Website <PhosphorIcon name="ArrowUpRight" weight="bold" size={20} className="group-hover:translate-y-[-1px] group-hover:translate-x-[1px] transition-transform duration-300" />
                             </a>
                         )}
