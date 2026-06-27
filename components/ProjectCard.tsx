@@ -6,6 +6,8 @@ import { MouseEvent } from "react";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
 
+const PROJECT_BACK_KEY = "project-back";
+
 interface ProjectCardProps {
   slug: string;
   src: string;
@@ -14,6 +16,7 @@ interface ProjectCardProps {
   tags: readonly string[];
   featured?: boolean;
   className?: string;
+  backTo?: string;
 }
 
 function TagList({ tags }: { tags: readonly string[] }) {
@@ -29,8 +32,18 @@ function TagList({ tags }: { tags: readonly string[] }) {
   );
 }
 
-export default function ProjectCard({ slug, src, alt, tags, featured = false, className = "", title = "" }: ProjectCardProps) {
+export default function ProjectCard({
+  slug,
+  src,
+  alt,
+  tags,
+  featured = false,
+  className = "",
+  title = "",
+  backTo = "/projects",
+}: ProjectCardProps) {
   const router = useRouter();
+  const projectHref = `/projects/${slug}?from=${encodeURIComponent(backTo)}`;
 
   const handleNavigate = (event: MouseEvent<HTMLAnchorElement>) => {
     if (
@@ -46,10 +59,11 @@ export default function ProjectCard({ slug, src, alt, tags, featured = false, cl
 
     event.preventDefault();
     sessionStorage.setItem("route-transition", "1");
+    sessionStorage.setItem(PROJECT_BACK_KEY, backTo);
 
     const page = document.querySelector("[data-page-transition]");
     if (!page) {
-      router.push(`/projects/${slug}`);
+      router.push(projectHref);
       return;
     }
 
@@ -59,13 +73,13 @@ export default function ProjectCard({ slug, src, alt, tags, featured = false, cl
       filter: "blur(10px)",
       duration: 0.35,
       ease: "power2.out",
-      onComplete: () => router.push(`/projects/${slug}`),
+      onComplete: () => router.push(projectHref),
     });
   };
 
   return (
     <Link
-      href={`/projects/${slug}`}
+      href={projectHref}
       onClick={handleNavigate}
       data-animate={featured ? "featured-project" : "project-card"}
       className={`relative rounded-2xl overflow-hidden group block cursor-pointer ${

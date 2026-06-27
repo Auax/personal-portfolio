@@ -85,7 +85,12 @@ export default function ProjectsPageContent() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <ProjectCard key={project.slug} {...project} featured={false} />
+            <ProjectCard
+              key={project.slug}
+              {...project}
+              featured={false}
+              backTo="/projects"
+            />
           ))}
         </div>
       </section>

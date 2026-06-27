@@ -7,11 +7,11 @@ export default function ProjectsSection() {
 
   return (
     <section className="w-full container mx-auto py-16 md:py-24" id="projects">
-      <ProjectCard {...featured} featured className="mb-6" />
+      <ProjectCard {...featured} featured className="mb-6" backTo="/" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {rest.map((project) => (
-          <ProjectCard key={project.slug} {...project} />
+          <ProjectCard key={project.slug} {...project} backTo="/" />
         ))}
       </div>
 

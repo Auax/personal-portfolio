@@ -1,8 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import SmoothScroll from "@/components/SmoothScroll";
 import RouteTransitionIn from "@/components/RouteTransitionIn";
+import ProjectBackLink from "@/components/ProjectBackLink";
 import { projects } from "@/lib/data";
 import { PhosphorIcon } from "@/components/PhosphorIcons";
 
@@ -40,12 +41,9 @@ export default async function ProjectPage({
                 <RouteTransitionIn />
                 {/* Back link */}
                 <nav className="fixed top-0 left-0 w-full z-50 px-8 md:px-16 py-6">
-                    <Link
-                        href="/projects"
-                        className="text-sm text-white/80 hover:text-white transition-colors"
-                    >
-                        &larr; Back to projects
-                    </Link>
+                    <Suspense>
+                        <ProjectBackLink />
+                    </Suspense>
                 </nav>
 
                 {/* Hero image */}
