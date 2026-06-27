@@ -59,7 +59,7 @@ export default function ContactSection() {
           <div className="mt-2">
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500 transition-colors text-white text-sm font-medium px-8 py-3"
+              className="inline-flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500 transition-colors text-white text-sm font-medium px-8 py-3 cursor-pointer"
             >
               Send
             </button>

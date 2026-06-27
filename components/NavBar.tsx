@@ -17,8 +17,13 @@ const links: NavLink[] = [
   { label: "My work", href: "/projects", type: "route" },
   { label: "Experience", href: "experience", type: "section" },
   { label: "About me", href: "about", type: "section" },
-  { label: "Contact", href: "contact", type: "section" },
 ];
+
+const contactLink: NavLink = {
+  label: "Contact",
+  href: "contact",
+  type: "section",
+};
 
 export default function NavBar({ onNavigate }: NavBarProps) {
   const router = useRouter();
@@ -139,60 +144,67 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
   return (
     <>
-      <nav className="fixed top-0 inset-x-0 z-[80]">
-        <div className="container mx-auto w-full">
+      <nav className="fixed top-0 inset-x-0 z-[80] pointer-events-none">
+        <div className="container mx-auto w-full pt-4 sm:pt-5 pointer-events-auto">
           <div
-            className={`flex justify-between items-center w-full px-6 md:px-8 py-4 mt-0 sm:mt-4 sm:rounded-full transition-all duration-300 ${
+            className={`w-full flex justify-between items-center rounded-full py-1.5 pl-4 pr-2 sm:py-2 transition-all duration-300 ${
               hasScrolled
                 ? "backdrop-blur-md bg-black/40 border border-white/5"
                 : "bg-transparent border border-transparent"
             }`}
           >
-          <span className="text-lg font-semibold tracking-tight font-serif italic">
-            IF
-          </span>
+            <span className="text-sm sm:text-lg font-semibold font-serif tracking-tight">
+              Ibai.F
+            </span>
 
-          <div className="hidden sm:flex items-center gap-6 text-sm text-neutral-200">
-            {links.map((link) => (
+            <div className="hidden sm:flex items-center gap-6 md:gap-8">
+              {links.map((link) => (
+                <a
+                  key={link.label}
+                  href={getHref(link)}
+                  className="text-sm text-neutral-200 hover:text-white transition-colors"
+                  onClick={(e) => handleLinkClick(link, e)}
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.label}
-                href={getHref(link)}
-                className="hover:text-white transition-colors"
-                onClick={(e) => handleLinkClick(link, e)}
+                href={getHref(contactLink)}
+                className="rounded-full bg-white text-black text-sm font-medium px-4 py-1.5 hover:bg-white/85 transition-colors"
+                onClick={(e) => handleLinkClick(contactLink, e)}
               >
-                {link.label}
+                {contactLink.label}
               </a>
-            ))}
-          </div>
+            </div>
 
-          <button
-            className="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => {
-              if (menuOpen) {
-                closeMenu();
-              } else {
-                setMenuOpen(true);
-              }
-            }}
-          >
-            <span
-              className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
-                menuOpen ? "rotate-45 translate-y-[6px]" : ""
-              }`}
-            />
-            <span
-              className={`block w-5 h-px bg-white transition-all duration-300 ${
-                menuOpen ? "opacity-0 scale-x-0" : ""
-              }`}
-            />
-            <span
-              className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
-                menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
-              }`}
-            />
-          </button>
+            <button
+              className="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              onClick={() => {
+                if (menuOpen) {
+                  closeMenu();
+                } else {
+                  setMenuOpen(true);
+                }
+              }}
+            >
+              <span
+                className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
+                  menuOpen ? "rotate-45 translate-y-[6px]" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-px bg-white transition-all duration-300 ${
+                  menuOpen ? "opacity-0 scale-x-0" : ""
+                }`}
+              />
+              <span
+                className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
+                  menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
+                }`}
+              />
+            </button>
           </div>
         </div>
       </nav>
@@ -203,7 +215,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
           className="fixed inset-0 z-[70] bg-black/95 backdrop-blur-sm flex flex-col items-start justify-end pb-16 sm:hidden"
         >
           <nav className="container mx-auto w-full flex flex-col gap-2">
-            {links.map((link) => (
+            {[...links, contactLink].map((link) => (
               <a
                 key={link.label}
                 data-menu-link
