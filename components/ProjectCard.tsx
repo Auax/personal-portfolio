@@ -77,10 +77,11 @@ export default function ProjectCard({ slug, src, alt, tags, featured = false, cl
         src={src}
         alt={alt}
         fill
-        sizes="100vw"
+        sizes="50vw"
         // sizes={featured ? "(max-width: 768px) 100vw, 100vw" : "(max-width: 768px) 100vw, 50vw"}
         quality={100}
-        className="object-cover transition-transform duration-500 group-hover:scale-105"
+        unoptimized
+        className="object-cover object-center scale-[1.02] transition-transform duration-500 group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
       <div className={`absolute ${featured ? "bottom-6 left-6" : "bottom-5 left-5"}`}>

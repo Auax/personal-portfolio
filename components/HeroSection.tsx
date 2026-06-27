@@ -19,12 +19,12 @@ export default function HeroSection() {
             <div className="relative z-10 w-full container mx-auto pt-32 pb-24">
                 <div data-animate="hero-text" className="flex flex-col gap-4">
                     <h1 id="hero-text" className="text-center text-7xl md:text-7xl lg:text-8xl font-serif leading-[1.05] tracking-tight">
-                        Hi! I&apos;m a <em className="italic">full-stack</em>
+                        Hi! I'm Ibai Farina,
                         <br />
-                        web developer
+                        <em className="italic">full stack</em> developer
                     </h1>
                     <p className="text-center text-base mx-auto md:text-lg text-zinc-400 max-w-md mt-2">
-                        Full-stack developer based in Barcelona, Spain
+                        I'm based in Barcelona, Spain
                     </p>
                 </div>
                 <div data-animate="hero-cta" className="mt-8 text-center">

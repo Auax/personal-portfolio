@@ -14,7 +14,9 @@ export default function ContactSection() {
           >
             Let&apos;s talk
           </h2>
-          <p className="text-zinc-400 text-base">Explain your project</p>
+          <p data-animate="fade-up" className="text-zinc-400 text-base">
+            Explain your project
+          </p>
         </div>
 
         <form

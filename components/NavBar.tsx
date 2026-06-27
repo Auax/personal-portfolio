@@ -1,20 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 
 interface NavBarProps {
   onNavigate?: (id: string) => void;
 }
 
-const links = [
-  { href: "projects", label: "My work" },
-  { href: "experience", label: "Experience" },
-  { href: "about", label: "About me" },
-  { href: "contact", label: "Contact" },
-] as const;
+type NavLink =
+  | { label: string; href: string; type: "route" }
+  | { label: string; href: string; type: "section" };
+
+const links: NavLink[] = [
+  { label: "Home", href: "/", type: "route" },
+  { label: "My work", href: "/projects", type: "route" },
+  { label: "Experience", href: "experience", type: "section" },
+  { label: "About me", href: "about", type: "section" },
+  { label: "Contact", href: "contact", type: "section" },
+];
 
 export default function NavBar({ onNavigate }: NavBarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [hasScrolled, setHasScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isClosingRef = useRef(false);
@@ -80,37 +88,79 @@ export default function NavBar({ onNavigate }: NavBarProps) {
     });
   };
 
-  const navigate = (id: string) => {
-    closeMenu(() => onNavigate?.(id));
+  const getHref = (link: NavLink) => {
+    if (link.type === "route") return link.href;
+    return pathname === "/" ? `#${link.href}` : `/#${link.href}`;
+  };
+
+  const goToLink = (link: NavLink) => {
+    if (link.type === "route") {
+      if (link.href === pathname) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      router.push(link.href);
+      return;
+    }
+
+    if (onNavigate && pathname === "/") {
+      onNavigate(link.href);
+      return;
+    }
+
+    router.push(`/#${link.href}`);
+  };
+
+  const shouldIntercept = (event: React.MouseEvent<HTMLAnchorElement>) =>
+    !event.defaultPrevented &&
+    event.button === 0 &&
+    !event.metaKey &&
+    !event.ctrlKey &&
+    !event.shiftKey &&
+    !event.altKey;
+
+  const handleLinkClick = (
+    link: NavLink,
+    event: React.MouseEvent<HTMLAnchorElement>
+  ) => {
+    if (!shouldIntercept(event)) return;
+
+    if (link.type === "route") {
+      event.preventDefault();
+      goToLink(link);
+      return;
+    }
+
+    if (onNavigate && pathname === "/") {
+      event.preventDefault();
+      onNavigate(link.href);
+    }
   };
 
   return (
     <>
-      <nav className="fixed top-0 left-1/2 -translate-x-1/2 w-full z-[80] sm:container">
-        <div
-          className={`flex justify-between items-center mx-auto w-full px-8 sm:px-10 py-4 mt-0 sm:mt-4 sm:rounded-full transition-all duration-300 ${
-            hasScrolled
-              ? "backdrop-blur-md bg-black/40 border border-white/5"
-              : "bg-transparent border border-transparent"
-          }`}
-        >
+      <nav className="fixed top-0 inset-x-0 z-[80]">
+        <div className="container mx-auto w-full">
+          <div
+            className={`flex justify-between items-center w-full px-6 md:px-8 py-4 mt-0 sm:mt-4 sm:rounded-full transition-all duration-300 ${
+              hasScrolled
+                ? "backdrop-blur-md bg-black/40 border border-white/5"
+                : "bg-transparent border border-transparent"
+            }`}
+          >
           <span className="text-lg font-semibold tracking-tight font-serif italic">
             IF
           </span>
 
           <div className="hidden sm:flex items-center gap-6 text-sm text-neutral-200">
-            {links.map(({ href, label }) => (
+            {links.map((link) => (
               <a
-                key={href}
-                href={`#${href}`}
+                key={link.label}
+                href={getHref(link)}
                 className="hover:text-white transition-colors"
-                onClick={(e) => {
-                  if (!onNavigate) return;
-                  e.preventDefault();
-                  onNavigate(href);
-                }}
+                onClick={(e) => handleLinkClick(link, e)}
               >
-                {label}
+                {link.label}
               </a>
             ))}
           </div>
@@ -143,27 +193,28 @@ export default function NavBar({ onNavigate }: NavBarProps) {
               }`}
             />
           </button>
+          </div>
         </div>
       </nav>
 
       {menuOpen && (
         <div
           data-menu-overlay
-          className="fixed inset-0 z-[70] bg-black/95 backdrop-blur-sm flex flex-col items-start justify-end px-8 pb-16 sm:hidden"
+          className="fixed inset-0 z-[70] bg-black/95 backdrop-blur-sm flex flex-col items-start justify-end pb-16 sm:hidden"
         >
-          <nav className="flex flex-col gap-2 w-full">
-            {links.map(({ href, label }) => (
+          <nav className="container mx-auto w-full flex flex-col gap-2">
+            {links.map((link) => (
               <a
-                key={href}
+                key={link.label}
                 data-menu-link
-                href={`#${href}`}
+                href={getHref(link)}
                 className="text-5xl font-serif text-white py-2 border-b border-zinc-800 last:border-b-0"
                 onClick={(e) => {
                   e.preventDefault();
-                  navigate(href);
+                  closeMenu(() => goToLink(link));
                 }}
               >
-                {label}
+                {link.label}
               </a>
             ))}
           </nav>
