@@ -11,6 +11,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -196,7 +197,7 @@ export default function Portfolio() {
             <ExperienceSection />
             <AboutSection />
             <ContactSection />
-            <div className="h-16" />
+            <Footer />
         </div>
     );
 }

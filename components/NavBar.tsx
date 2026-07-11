@@ -151,7 +151,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between">
+        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 sm:px-0">
           <span className="text-xl font-serif tracking-tight text-white">
             Ibai.F
           </span>

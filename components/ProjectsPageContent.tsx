@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NavBar from "@/components/NavBar";
 import RouteTransitionIn from "@/components/RouteTransitionIn";
 import ProjectCard from "@/components/ProjectCard";
+import Footer from "@/components/Footer";
 import { projects } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -94,6 +95,7 @@ export default function ProjectsPageContent() {
           ))}
         </div>
       </section>
+      <Footer />
     </main>
   );
 }
