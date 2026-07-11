@@ -1,16 +1,18 @@
-import { skills } from "@/lib/data";
+"use client";
 
-const aboutText =
-  "I’m a web and mobile developer passionate about creating products that are both beautiful and functional. I enjoy turning ideas into real, meaningful experiences and bringing them to life.";
+import { useLocale } from "@/lib/i18n";
 
 export default function AboutSection() {
+  const { messages } = useLocale();
+  const aboutText = messages.about.text;
+
   return (
     <section className="w-full container mx-auto py-16 md:py-24" id="about">
       <h2
         data-animate="section-heading"
         className="text-5xl md:text-7xl font-serif mb-12"
       >
-        About me
+        {messages.about.title}
       </h2>
 
       <p
@@ -31,13 +33,13 @@ export default function AboutSection() {
         data-animate="fade-up"
         className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-zinc-800 pt-10"
       >
-        {Object.entries(skills).map(([category, items]) => (
-          <div key={category}>
+        {messages.about.groups.map((group) => (
+          <div key={group.title}>
             <h4 className="text-sm text-zinc-500 uppercase tracking-wider mb-4">
-              {category}
+              {group.title}
             </h4>
             <ul className="flex flex-col gap-2">
-              {items.map((item) => (
+              {group.items.map((item) => (
                 <li key={item} className="text-sm text-zinc-300">
                   {item}
                 </li>

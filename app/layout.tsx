@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { Instrument_Serif } from "next/font/google";
+import { LocaleProvider } from "@/lib/i18n";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,7 +33,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-white font-sans">
-        {children}
+        <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>
   );

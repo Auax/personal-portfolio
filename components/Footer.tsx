@@ -2,17 +2,18 @@
 
 import type { MouseEvent } from "react";
 import { usePathname } from "next/navigation";
-
-const footerLinks = [
-  { label: "Home", href: "#hero-text", route: "/" },
-  { label: "Work", href: "#projects", route: "/projects" },
-  { label: "Experience", href: "#experience", route: "/" },
-  { label: "About", href: "#about", route: "/" },
-  { label: "Contact", href: "#contact", route: "/" },
-] as const;
+import { useLocale } from "@/lib/i18n";
 
 export default function Footer() {
   const pathname = usePathname();
+  const { messages } = useLocale();
+  const footerLinks = [
+    { label: messages.nav.home, href: "#hero-text", route: "/" },
+    { label: messages.footer.work, href: "#projects", route: "/projects" },
+    { label: messages.nav.experience, href: "#experience", route: "/" },
+    { label: messages.footer.about, href: "#about", route: "/" },
+    { label: messages.nav.contact, href: "#contact", route: "/" },
+  ] as const;
 
   const getFooterHref = (link: (typeof footerLinks)[number]) => {
     if (link.route === "/projects") return "/projects";
@@ -42,8 +43,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-6" data-animate="fade-up">
             <p className="max-w-sm text-xl leading-snug text-zinc-300 md:text-2xl">
-              Full-stack developer creating thoughtful digital experiences from
-              Barcelona.
+              {messages.footer.intro}
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export default function Footer() {
           >
             <div>
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-zinc-600">
-                Navigate
+                {messages.footer.navigate}
               </p>
               <nav className="flex flex-col items-start gap-2.5">
                 {footerLinks.map((link) => (
@@ -70,7 +70,7 @@ export default function Footer() {
 
             <div>
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-zinc-600">
-                Elsewhere
+                {messages.footer.elsewhere}
               </p>
               <a
                 href="https://github.com/auax"
@@ -113,7 +113,7 @@ export default function Footer() {
             onClick={scrollToTop}
             className="group inline-flex items-center gap-2 transition-colors hover:text-white"
           >
-            Back to top
+            {messages.footer.backToTop}
             <svg
               aria-hidden="true"
               viewBox="0 0 16 16"

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+import { useLocale } from "@/lib/i18n";
 
 const PROJECT_BACK_KEY = "project-back";
 
@@ -13,27 +14,22 @@ function resolveBackHref(from: string | null): string {
 
 export default function ProjectBackLink() {
   const searchParams = useSearchParams();
-  const [href, setHref] = useState(() =>
-    resolveBackHref(searchParams.get("from"))
+  const { messages } = useLocale();
+  const fromParam = searchParams.get("from");
+  const storedHref = useSyncExternalStore(
+    () => () => undefined,
+    () => resolveBackHref(sessionStorage.getItem(PROJECT_BACK_KEY)),
+    () => "/projects"
   );
-
-  useEffect(() => {
-    const fromParam = searchParams.get("from");
-    if (fromParam === "/" || fromParam === "/projects") {
-      setHref(fromParam);
-      return;
-    }
-
-    const stored = sessionStorage.getItem(PROJECT_BACK_KEY);
-    setHref(resolveBackHref(stored));
-  }, [searchParams]);
+  const href =
+    fromParam === "/" || fromParam === "/projects" ? fromParam : storedHref;
 
   return (
     <Link
       href={href}
       className="text-sm text-white/80 hover:text-white transition-colors"
     >
-      &larr; Back
+      &larr; {messages.project.back}
     </Link>
   );
 }

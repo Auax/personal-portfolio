@@ -12,11 +12,13 @@ import ExperienceSection from "@/components/ExperienceSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import { useLocale } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Portfolio() {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { locale } = useLocale();
 
   const scrollToId = (id: string) => {
     const el = document.getElementById(id);
@@ -182,7 +184,7 @@ export default function Portfolio() {
                     });
                 });
         },
-        { scope: containerRef }
+        { scope: containerRef, dependencies: [locale], revertOnUpdate: true }
     );
 
     return (

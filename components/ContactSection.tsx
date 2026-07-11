@@ -1,6 +1,10 @@
 "use client";
 
+import { useLocale } from "@/lib/i18n";
+
 export default function ContactSection() {
+  const { messages } = useLocale();
+
   return (
     <section
       id="contact"
@@ -12,10 +16,10 @@ export default function ContactSection() {
             data-animate="section-heading"
             className="text-5xl md:text-7xl font-serif mb-4"
           >
-            Let&apos;s talk
+            {messages.contact.title}
           </h2>
           <p data-animate="fade-up" className="text-zinc-400 text-base">
-            Explain your project
+            {messages.contact.intro}
           </p>
         </div>
 
@@ -27,7 +31,7 @@ export default function ContactSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-sm text-zinc-400">
-                Name
+                {messages.contact.name}
               </label>
               <input
                 id="name"
@@ -37,7 +41,7 @@ export default function ContactSection() {
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className="text-sm text-zinc-400">
-                Email
+                {messages.contact.email}
               </label>
               <input
                 id="email"
@@ -48,7 +52,7 @@ export default function ContactSection() {
           </div>
           <div className="flex flex-col gap-2">
             <label htmlFor="description" className="text-sm text-zinc-400">
-              Description
+              {messages.contact.description}
             </label>
             <textarea
               id="description"
@@ -61,7 +65,7 @@ export default function ContactSection() {
               type="submit"
               className="inline-flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500 transition-colors text-white text-sm font-medium px-8 py-3 cursor-pointer"
             >
-              Send
+              {messages.contact.send}
             </button>
           </div>
         </form>

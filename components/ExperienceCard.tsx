@@ -1,9 +1,10 @@
-import { experiences } from "@/lib/data";
-
-type ExperienceItem = (typeof experiences)[number];
-
 interface ExperienceCardProps {
-  experience: ExperienceItem;
+  experience: {
+    title: string;
+    description: string;
+    tags: readonly string[];
+    period: string;
+  };
 }
 
 export default function ExperienceCard({ experience }: ExperienceCardProps) {

@@ -10,11 +10,13 @@ import RouteTransitionIn from "@/components/RouteTransitionIn";
 import ProjectCard from "@/components/ProjectCard";
 import Footer from "@/components/Footer";
 import { projects } from "@/lib/data";
+import { useLocale } from "@/lib/i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectsPageContent() {
   const containerRef = useRef<HTMLElement>(null);
+  const { messages, translateProject } = useLocale();
 
   useGSAP(
     () => {
@@ -75,20 +77,20 @@ export default function ProjectsPageContent() {
           data-animate="section-heading"
           className="text-5xl md:text-7xl font-serif mb-4"
         >
-          Projects
+          {messages.projects.title}
         </h1>
         <p
           data-animate="fade-up"
           className="text-zinc-400 text-base md:text-lg mb-12 md:mb-16 max-w-xl"
         >
-          A collection of work across design, development, and product.
+          {messages.projects.intro}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {projects.map((project) => (
             <ProjectCard
               key={project.slug}
-              {...project}
+              {...translateProject(project)}
               featured={false}
               backTo="/projects"
             />

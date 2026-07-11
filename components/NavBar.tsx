@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
+import { useLocale, type Locale } from "@/lib/i18n";
 
 interface NavBarProps {
   onNavigate?: (id: string) => void;
@@ -12,25 +13,47 @@ type NavLink =
   | { label: string; href: string; type: "route" }
   | { label: string; href: string; type: "section" };
 
-const links: NavLink[] = [
-  { label: "Home", href: "/", type: "route" },
-  { label: "My work", href: "/projects", type: "route" },
-  { label: "Experience", href: "experience", type: "section" },
-  { label: "About me", href: "about", type: "section" },
-];
-
-const contactLink: NavLink = {
-  label: "Contact",
-  href: "contact",
-  type: "section",
-};
-
 export default function NavBar({ onNavigate }: NavBarProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const { locale, setLocale, messages } = useLocale();
   const [hasScrolled, setHasScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isClosingRef = useRef(false);
+  const links: NavLink[] = [
+    { label: messages.nav.home, href: "/", type: "route" },
+    { label: messages.nav.work, href: "/projects", type: "route" },
+    { label: messages.nav.experience, href: "experience", type: "section" },
+    { label: messages.nav.about, href: "about", type: "section" },
+  ];
+  const contactLink: NavLink = {
+    label: messages.nav.contact,
+    href: "contact",
+    type: "section",
+  };
+
+  const languageSelector = (mobile = false) => (
+    <div
+      className={`flex items-center rounded-full border border-white/15 p-0.5 ${mobile ? "w-fit" : ""}`}
+      aria-label={messages.nav.language}
+    >
+      {(["en", "es"] as Locale[]).map((language) => (
+        <button
+          key={language}
+          type="button"
+          onClick={() => setLocale(language)}
+          aria-pressed={locale === language}
+          className={`rounded-full px-2 py-1 text-[10px] font-semibold uppercase tracking-wider transition-colors ${
+            locale === language
+              ? "bg-white text-black"
+              : "text-zinc-500 hover:text-white"
+          }`}
+        >
+          {language}
+        </button>
+      ))}
+    </div>
+  );
 
   useEffect(() => {
     const onScroll = () => setHasScrolled(window.scrollY > 0);
@@ -167,6 +190,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                 {link.label}
               </a>
             ))}
+            {languageSelector()}
             <a
               href={getHref(contactLink)}
               className="ml-1 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-black transition-colors hover:bg-white/85"
@@ -178,7 +202,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
           <button
             className="sm:hidden flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full border border-white/15"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? messages.nav.close : messages.nav.open}
             aria-expanded={menuOpen}
             onClick={() => {
               if (menuOpen) {
@@ -213,6 +237,9 @@ export default function NavBar({ onNavigate }: NavBarProps) {
           className="fixed inset-0 z-[70] bg-black/95 backdrop-blur-sm flex flex-col items-start justify-end pb-16 sm:hidden"
         >
           <nav className="container mx-auto w-full flex flex-col gap-2">
+            <div data-menu-link className="mb-5">
+              {languageSelector(true)}
+            </div>
             {[...links, contactLink].map((link) => (
               <a
                 key={link.label}
