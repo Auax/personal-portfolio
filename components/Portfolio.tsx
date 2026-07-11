@@ -141,6 +141,30 @@ export default function Portfolio() {
                 });
 
             gsap.utils
+                .toArray<HTMLElement>("[data-animate='scroll-text']")
+                .forEach((text) => {
+                    const characters = text.querySelectorAll<HTMLElement>(
+                        "[data-scroll-character]"
+                    );
+
+                    gsap.fromTo(
+                        characters,
+                        { color: "rgba(212, 212, 216, 0.2)" },
+                        {
+                            color: "rgba(212, 212, 216, 1)",
+                            stagger: 0.04,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: text,
+                                start: "top 85%",
+                                end: "bottom 45%",
+                                scrub: true,
+                            },
+                        }
+                    );
+                });
+
+            gsap.utils
                 .toArray<HTMLElement>("[data-animate='fade-up']")
                 .forEach((el) => {
                     gsap.from(el, {

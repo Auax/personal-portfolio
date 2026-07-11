@@ -1,5 +1,8 @@
 import { skills } from "@/lib/data";
 
+const aboutText =
+  "I’m a web and mobile developer passionate about creating products that are both beautiful and functional. I enjoy turning ideas into real, meaningful experiences and bringing them to life.";
+
 export default function AboutSection() {
   return (
     <section className="w-full container mx-auto py-16 md:py-24" id="about">
@@ -11,10 +14,17 @@ export default function AboutSection() {
       </h2>
 
       <p
-        data-animate="fade-up"
+        data-animate="scroll-text"
+        aria-label={aboutText}
         className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mb-16"
       >
-        I’m a web and mobile developer passionate about creating products that are both beautiful and functional. I enjoy turning ideas into real, meaningful experiences and bringing them to life.
+        <span aria-hidden="true">
+          {Array.from(aboutText).map((character, index) => (
+            <span key={index} data-scroll-character>
+              {character}
+            </span>
+          ))}
+        </span>
       </p>
 
       <div
