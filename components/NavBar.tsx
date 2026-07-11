@@ -144,51 +144,50 @@ export default function NavBar({ onNavigate }: NavBarProps) {
 
   return (
     <>
-      <nav className="fixed top-0 inset-x-0 z-[80] pointer-events-none">
-        <div className="container mx-auto w-full pt-4 sm:pt-5 pointer-events-auto">
-          <div
-            className={`w-full flex justify-between items-center rounded-full py-1.5 pl-4 pr-2 sm:py-2 transition-all duration-300 ${
-              hasScrolled
-                ? "backdrop-blur-md bg-black/40 border border-white/5"
-                : "bg-transparent border border-transparent"
-            }`}
-          >
-            <span className="text-sm sm:text-lg font-semibold font-serif tracking-tight">
-              Ibai.F
-            </span>
+      <nav
+        className={`fixed top-0 inset-x-0 z-[80] transition-[background-color,border-color] duration-300 ${
+          hasScrolled
+            ? "border-b border-white/10 bg-black/75 backdrop-blur-xl"
+            : "border-b border-transparent bg-transparent"
+        }`}
+      >
+        <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between">
+          <span className="text-xl font-serif tracking-tight text-white">
+            Ibai.F
+          </span>
 
-            <div className="hidden sm:flex items-center gap-6 md:gap-8">
-              {links.map((link) => (
-                <a
-                  key={link.label}
-                  href={getHref(link)}
-                  className="text-sm text-neutral-200 hover:text-white transition-colors"
-                  onClick={(e) => handleLinkClick(link, e)}
-                >
-                  {link.label}
-                </a>
-              ))}
+          <div className="hidden sm:flex items-center gap-5 md:gap-7">
+            {links.map((link) => (
               <a
-                href={getHref(contactLink)}
-                className="rounded-full bg-white text-black text-sm font-medium px-4 py-1.5 hover:bg-white/85 transition-colors"
-                onClick={(e) => handleLinkClick(contactLink, e)}
+                key={link.label}
+                href={getHref(link)}
+                className="text-[13px] font-medium text-zinc-400 transition-colors hover:text-white"
+                onClick={(e) => handleLinkClick(link, e)}
               >
-                {contactLink.label}
+                {link.label}
               </a>
-            </div>
-
-            <button
-              className="sm:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={menuOpen}
-              onClick={() => {
-                if (menuOpen) {
-                  closeMenu();
-                } else {
-                  setMenuOpen(true);
-                }
-              }}
+            ))}
+            <a
+              href={getHref(contactLink)}
+              className="ml-1 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-black transition-colors hover:bg-white/85"
+              onClick={(e) => handleLinkClick(contactLink, e)}
             >
+              {contactLink.label}
+            </a>
+          </div>
+
+          <button
+            className="sm:hidden flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full border border-white/15"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => {
+              if (menuOpen) {
+                closeMenu();
+              } else {
+                setMenuOpen(true);
+              }
+            }}
+          >
               <span
                 className={`block w-5 h-px bg-white transition-all duration-300 origin-center ${
                   menuOpen ? "rotate-45 translate-y-[6px]" : ""
@@ -204,8 +203,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
                   menuOpen ? "-rotate-45 -translate-y-[6px]" : ""
                 }`}
               />
-            </button>
-          </div>
+          </button>
         </div>
       </nav>
 

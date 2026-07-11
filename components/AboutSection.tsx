@@ -16,7 +16,7 @@ export default function AboutSection() {
       <p
         data-animate="scroll-text"
         aria-label={aboutText}
-        className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mb-16"
+        className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-4xl mb-16"
       >
         <span aria-hidden="true">
           {Array.from(aboutText).map((character, index) => (
