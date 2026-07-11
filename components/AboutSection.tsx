@@ -14,8 +14,7 @@ export default function AboutSection() {
         data-animate="fade-up"
         className="text-lg md:text-xl text-zinc-300 leading-relaxed max-w-3xl mb-16"
       >
-        I build machine learning systems that go beyond notebooks and into
-        production — where data actually changes decisions.
+        I’m a web and mobile developer passionate about creating products that are both beautiful and functional. I enjoy turning ideas into real, meaningful experiences and bringing them to life.
       </p>
 
       <div

@@ -33,7 +33,7 @@ export const projects: Project[] = [
   },
   {
     slug: "omnitrack",
-    src: "/projects/omnitrack.png",
+    src: "/projects/omnitrack.jpg",
     src_detail: "/projects/omnitrack-detail.png",
     alt: "OmniTrack app",
     tags: ["iOS", "Tracking", "Movies"],
@@ -108,14 +108,14 @@ export const experiences = [
     title: "Freelance website developer",
     description:
       "Building websites for clients and businesses to help them showcase their products and services.",
-    tags: ["Next.js", "TypeScript", "SEO", "Sales"],
+    tags: ["Web design", "Figma", "SEO", "Sales"],
     period: "Present",
   },
 ] as const;
 
 export const skills: Record<string, readonly string[]> = {
-  Skills: ["Deep Learning", "Computer Vision", "Frontend Dev", "Data Science", "Cloud Architecture"],
-  Languages: ["Python", "TypeScript", "Rust", "Go", "SQL"],
-  Frameworks: ["React", "Next.js", "PyTorch", "TensorFlow", "FastAPI"],
-  Platforms: ["AWS", "Docker", "Kubernetes", "Vercel", "PostgreSQL"],
+  Skills: ["Web design & development", "UI/UX design", "iOS & MacOS development", "Data Science"],
+  Languages: ["Python", "TypeScript", "C++", "Swift", "Java"],
+  Frameworks: ["React", "Next.js", "SwiftUI", "Tailwind CSS"],
+  Tools: ["Vercel", "Supabase", "GitHub", "Figma", "Cursor"],
 };
