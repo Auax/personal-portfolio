@@ -1,23 +1,63 @@
 "use client";
 
+import Image from "next/image";
 import type { MouseEvent } from "react";
 import { usePathname } from "next/navigation";
 import { useLocale } from "@/lib/i18n";
+import {
+  getNavigationHref,
+  navigationItems,
+  type NavigationItem,
+} from "@/lib/navigation";
 
 export default function Footer() {
   const pathname = usePathname();
   const { messages } = useLocale();
-  const footerLinks = [
-    { label: messages.nav.home, href: "#hero-text", route: "/" },
-    { label: messages.footer.work, href: "#projects", route: "/projects" },
-    { label: messages.nav.experience, href: "#experience", route: "/" },
-    { label: messages.footer.about, href: "#about", route: "/" },
-    { label: messages.nav.contact, href: "#contact", route: "/" },
-  ] as const;
 
-  const getFooterHref = (link: (typeof footerLinks)[number]) => {
-    if (link.route === "/projects") return "/projects";
-    return pathname === "/" ? link.href : `/${link.href}`;
+  const scrollTo = (target: number | Element, offset = 0) => {
+    const lenis = (
+      window as unknown as {
+        __lenis?: {
+          scrollTo: (
+            target: number | Element,
+            options?: { offset?: number; duration?: number },
+          ) => void;
+        };
+      }
+    ).__lenis;
+
+    if (lenis) {
+      lenis.scrollTo(target, { offset, duration: 1.1 });
+      return;
+    }
+
+    if (typeof target === "number") {
+      window.scrollTo({ top: target, behavior: "smooth" });
+      return;
+    }
+
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleNavigationClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    link: NavigationItem,
+  ) => {
+    if (pathname !== "/") return;
+
+    if (link.type === "route") {
+      if (link.href !== "/") return;
+      event.preventDefault();
+      scrollTo(0);
+      return;
+    }
+
+    const target = document.getElementById(link.href);
+    if (!target) return;
+
+    event.preventDefault();
+    window.history.replaceState(null, "", `#${link.href}`);
+    scrollTo(target, -96);
   };
 
   const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -38,8 +78,20 @@ export default function Footer() {
   };
 
   return (
-    <footer className="container mx-auto w-full pb-8 pt-16 md:pb-10 md:pt-24">
-      <div className="border-t border-white/15 pt-8 md:pt-10">
+    <footer className="relative w-full overflow-hidden bg-black">
+      <div className="absolute inset-0 translate-x-[15%] opacity-90 hero-bg-mask">
+        <Image
+          src="/background.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
+
+      <div className="container relative z-10 mx-auto pb-8 pt-16 md:pb-10 md:pt-24">
+        <div className="border-t border-white/15 pt-8 md:pt-10">
         <div className="grid gap-12 md:grid-cols-12 md:gap-8">
           <div className="md:col-span-6" data-animate="fade-up">
             <p className="max-w-sm text-xl leading-snug text-zinc-300 md:text-2xl">
@@ -56,13 +108,14 @@ export default function Footer() {
                 {messages.footer.navigate}
               </p>
               <nav className="flex flex-col items-start gap-2.5">
-                {footerLinks.map((link) => (
+                {navigationItems.map((link) => (
                   <a
-                    key={link.label}
-                    href={getFooterHref(link)}
+                    key={link.labelKey}
+                    href={getNavigationHref(link, pathname)}
+                    onClick={(event) => handleNavigationClick(event, link)}
                     className="text-sm text-zinc-400 transition-colors hover:text-white"
                   >
-                    {link.label}
+                    {messages.nav[link.labelKey]}
                   </a>
                 ))}
               </nav>
@@ -98,37 +151,38 @@ export default function Footer() {
           </div>
         </div>
 
-        <p
-          aria-label="Ibai Farina"
-          data-animate="fade-up"
-          className="mt-20 overflow-hidden whitespace-nowrap font-serif text-[15vw] leading-[0.72] tracking-[-0.055em] text-white md:mt-28"
-        >
-          Ibai Farina
-        </p>
-
-        <div className="mt-8 flex items-end justify-between border-t border-white/10 pt-5 text-xs text-zinc-600 md:mt-10">
-          <p>© {new Date().getFullYear()} Ibai Farina</p>
-          <a
-            href="#hero-text"
-            onClick={scrollToTop}
-            className="group inline-flex items-center gap-2 transition-colors hover:text-white"
+          <p
+            aria-label="Ibai Farina"
+            data-animate="fade-up"
+            className="mt-20 overflow-hidden whitespace-nowrap font-serif text-[15vw] leading-[0.72] tracking-[-0.055em] text-white md:mt-28"
           >
-            {messages.footer.backToTop}
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 16 16"
-              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5"
-              fill="none"
+            Ibai Farina
+          </p>
+
+          <div className="mt-8 flex items-end justify-between border-t border-white/10 pt-5 text-xs text-zinc-600 md:mt-10">
+            <p>© {new Date().getFullYear()} Ibai Farina</p>
+            <a
+              href="#hero-text"
+              onClick={scrollToTop}
+              className="group inline-flex items-center gap-2 transition-colors hover:text-white"
             >
-              <path
-                d="m4.5 7.5 3.5-3.5 3.5 3.5M8 4v8"
-                stroke="currentColor"
-                strokeWidth="1.25"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+              {messages.footer.backToTop}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 16 16"
+                className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5"
+                fill="none"
+              >
+                <path
+                  d="m4.5 7.5 3.5-3.5 3.5 3.5M8 4v8"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

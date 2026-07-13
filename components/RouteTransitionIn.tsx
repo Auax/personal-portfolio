@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import gsap from "gsap";
 
 export default function RouteTransitionIn() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const shouldAnimate = sessionStorage.getItem("route-transition") === "1";
     if (!shouldAnimate) return;
 
@@ -13,11 +13,26 @@ export default function RouteTransitionIn() {
     const page = document.querySelector("[data-page-transition]");
     if (!page) return;
 
-    gsap.fromTo(
-      page,
-      { opacity: 0, filter: "blur(10px)" },
-      { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "power2.out" }
-    );
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      gsap.set(page, { clearProps: "opacity,transform,filter" });
+      return;
+    }
+
+    const context = gsap.context(() => {
+      gsap.fromTo(
+        page,
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out",
+          clearProps: "opacity,transform,filter",
+        }
+      );
+    });
+
+    return () => context.revert();
   }, []);
 
   return null;

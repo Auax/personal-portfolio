@@ -194,7 +194,7 @@ export default function Portfolio() {
             className="flex flex-col min-h-screen bg-black"
         >
             <NavBar onNavigate={scrollToId} />
-            <HeroSection />
+            <HeroSection onNavigate={scrollToId} />
             <ProjectsSection />
             <ExperienceSection />
             <AboutSection />

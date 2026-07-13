@@ -4,14 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import gsap from "gsap";
 import { useLocale, type Locale } from "@/lib/i18n";
+import {
+  contactNavigationItem,
+  getNavigationHref,
+  mainNavigationItems,
+  type NavigationItem,
+} from "@/lib/navigation";
 
 interface NavBarProps {
   onNavigate?: (id: string) => void;
 }
 
-type NavLink =
-  | { label: string; href: string; type: "route" }
-  | { label: string; href: string; type: "section" };
+type NavLink = NavigationItem & { label: string };
 
 export default function NavBar({ onNavigate }: NavBarProps) {
   const router = useRouter();
@@ -20,16 +24,13 @@ export default function NavBar({ onNavigate }: NavBarProps) {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isClosingRef = useRef(false);
-  const links: NavLink[] = [
-    { label: messages.nav.home, href: "/", type: "route" },
-    { label: messages.nav.work, href: "/projects", type: "route" },
-    { label: messages.nav.experience, href: "experience", type: "section" },
-    { label: messages.nav.about, href: "about", type: "section" },
-  ];
+  const links: NavLink[] = mainNavigationItems.map((link) => ({
+    ...link,
+    label: messages.nav[link.labelKey],
+  }));
   const contactLink: NavLink = {
-    label: messages.nav.contact,
-    href: "contact",
-    type: "section",
+    ...contactNavigationItem,
+    label: messages.nav[contactNavigationItem.labelKey],
   };
 
   const languageSelector = (mobile = false) => (
@@ -116,11 +117,6 @@ export default function NavBar({ onNavigate }: NavBarProps) {
     });
   };
 
-  const getHref = (link: NavLink) => {
-    if (link.type === "route") return link.href;
-    return pathname === "/" ? `#${link.href}` : `/#${link.href}`;
-  };
-
   const goToLink = (link: NavLink) => {
     if (link.type === "route") {
       if (link.href === pathname) {
@@ -183,7 +179,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
             {links.map((link) => (
               <a
                 key={link.label}
-                href={getHref(link)}
+                href={getNavigationHref(link, pathname)}
                 className="text-[13px] font-medium text-zinc-400 transition-colors hover:text-white"
                 onClick={(e) => handleLinkClick(link, e)}
               >
@@ -192,7 +188,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
             ))}
             {languageSelector()}
             <a
-              href={getHref(contactLink)}
+              href={getNavigationHref(contactLink, pathname)}
               className="ml-1 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-black transition-colors hover:bg-white/85"
               onClick={(e) => handleLinkClick(contactLink, e)}
             >
@@ -244,7 +240,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
               <a
                 key={link.label}
                 data-menu-link
-                href={getHref(link)}
+                href={getNavigationHref(link, pathname)}
                 className="text-5xl font-serif text-white py-2 border-b border-zinc-800 last:border-b-0"
                 onClick={(e) => {
                   e.preventDefault();

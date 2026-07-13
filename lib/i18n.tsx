@@ -7,7 +7,7 @@ export type Locale = "en" | "es";
 const messages = {
   en: {
     nav: { home: "Home", work: "My work", experience: "Experience", about: "About me", contact: "Contact", open: "Open menu", close: "Close menu", language: "Language" },
-    hero: { greeting: "Hi! I'm Ibai Farina,", roleAccent: "full stack", role: "developer", location: "I'm based in Barcelona, Spain", contact: "Contact me" },
+    hero: { greeting: "Hi! I'm Ibai Farina,", roleAccent: "full stack", role: "developer", location: "I'm based in Barcelona, Spain", cta: "View my work" },
     projects: { title: "Projects", intro: "A collection of work across design, development, and product.", viewAll: "View all projects" },
     experience: {
       title: "Experience",
@@ -18,7 +18,7 @@ const messages = {
     },
     about: {
       title: "About me",
-      text: "I’m a web and mobile developer passionate about creating products that are both beautiful and functional. I enjoy turning ideas into real, meaningful experiences and bringing them to life.",
+      text: "I’m a software developer and Data Science student based in Barcelona. I enjoy turning ideas into polished products, from native iOS and macOS applications to modern web experiences. I care equally about how software works and how it feels to use.",
       groups: [
         { title: "Skills", items: ["Web design & development", "UI/UX design", "iOS & macOS development", "Data Science"] },
         { title: "Languages", items: ["Python", "TypeScript", "C++", "Swift", "Java"] },
@@ -28,39 +28,39 @@ const messages = {
     },
     contact: { title: "Let's talk", intro: "Tell me about your project", name: "Name", email: "Email", description: "Description", send: "Send" },
     footer: { intro: "Full-stack developer creating thoughtful digital experiences from Barcelona.", navigate: "Navigate", elsewhere: "Elsewhere", work: "Work", about: "About", backToTop: "Back to top" },
-    project: { back: "Back", year: "Year", role: "Role", stack: "Stack", website: "Website" },
+    project: { back: "Back", year: "Year", role: "Role", stack: "Stack", tags: "Tags", website: "Website" },
   },
   es: {
     nav: { home: "Inicio", work: "Proyectos", experience: "Experiencia", about: "Sobre mí", contact: "Contacto", open: "Abrir menú", close: "Cerrar menú", language: "Idioma" },
-    hero: { greeting: "¡Hola! Soy Ibai Farina,", roleAccent: "desarrollador", role: "full stack", location: "Vivo en Barcelona, España", contact: "Contáctame" },
+    hero: { greeting: "¡Hola! Soy Ibai Farina,", roleAccent: "desarrollador", role: "full stack", location: "Basado en Barcelona, España", cta: "Ver mi trabajo" },
     projects: { title: "Proyectos", intro: "Una selección de trabajos de diseño, desarrollo y producto.", viewAll: "Ver todos los proyectos" },
     experience: {
       title: "Experiencia",
       items: [
-        { title: "Estudiante de Ciencia de Datos en la UPF", description: "Actualmente estudio Ciencia de Datos en la Universitat Pompeu Fabra, donde aprendo sobre IA, ciencia de datos, matemáticas avanzadas y estadística, y cómo aplicarlas a problemas reales.", tags: ["IA", "Ciencia de Datos", "Matemáticas y Estadística Avanzadas"], period: "2025 — Actualidad" },
+        { title: "Estudiante de Data Science en la UPF", description: "Estoy estudiando Data Science en la Universitat Pompeu Fabra, donde aprendo sobre IA, ciencia de datos, matemáticas avanzadas y estadística, y cómo aplicarlas a problemas reales.", tags: ["IA", "Data Science", "Matemáticas y Estadística Avanzadas"], period: "2025 — Actualidad" },
         { title: "Desarrollador web freelance", description: "Creo páginas web para clientes y empresas que quieren mostrar mejor sus productos y servicios.", tags: ["Diseño web", "Figma", "SEO", "Ventas"], period: "Actualidad" },
       ],
     },
     about: {
       title: "Sobre mí",
-      text: "Soy desarrollador web y móvil y me apasiona crear productos bonitos y funcionales. Disfruto convirtiendo ideas en experiencias reales con significado y dándoles vida.",
+      text: "Soy desarrollador de software y estudiante de Ciencia de Datos en Barcelona. Me gusta convertir ideas en productos cuidados, desde aplicaciones nativas para iOS y macOS hasta experiencias web modernas. Me importa tanto cómo funciona el software como la experiencia que ofrece al utilizarlo.",
       groups: [
-        { title: "Habilidades", items: ["Diseño y desarrollo web", "Diseño UI/UX", "Desarrollo para iOS y macOS", "Ciencia de Datos"] },
+        { title: "Habilidades", items: ["Diseño y desarrollo web", "Diseño UI/UX", "Desarrollo para iOS y macOS", "Data Science"] },
         { title: "Lenguajes", items: ["Python", "TypeScript", "C++", "Swift", "Java"] },
         { title: "Frameworks", items: ["React", "Next.js", "SwiftUI", "Tailwind CSS"] },
         { title: "Herramientas", items: ["Vercel", "Supabase", "GitHub", "Figma", "Cursor"] },
       ],
     },
     contact: { title: "Hablemos", intro: "Cuéntame sobre tu proyecto", name: "Nombre", email: "Email", description: "Descripción", send: "Enviar" },
-    footer: { intro: "Desarrollador full-stack que crea experiencias digitales cuidadas desde Barcelona.", navigate: "Navegar", elsewhere: "También en", work: "Proyectos", about: "Sobre mí", backToTop: "Volver arriba" },
-    project: { back: "Volver", year: "Año", role: "Rol", stack: "Tecnologías", website: "Sitio web" },
+    footer: { intro: "Desarrollador full-stack creando experiencias digitales desde Barcelona.", navigate: "Navegar", elsewhere: "También en", work: "Proyectos", about: "Sobre mí", backToTop: "Volver arriba" },
+    project: { back: "Volver", year: "Año", role: "Rol", stack: "Tecnologías", tags: "Etiquetas", website: "Sitio web" },
   },
 } as const;
 
 const projectTranslations: Record<string, { es: { description: string; role: string; tags: readonly string[]; alt: string } }> = {
   "IB-Studio": { es: { description: "Mi web freelance, donde ofrezco servicios de diseño web a negocios locales que quieren crear o mejorar su presencia online. Presenta varios proyectos para clientes y proyectos conceptuales, junto con tres planes de precios claros y un formulario de contacto sencillo para empezar nuevos proyectos.", role: "Desarrollador y diseñador", tags: ["Freelance", "Web", "Diseño"], alt: "Sitio web de IB Studio" } },
   omnitrack: { es: { description: "Un proyecto personal para llevar un registro de películas, series y anime, con especial atención a una interfaz fácil de usar. Lo creé para aprender SwiftUI y Swift y mejorar mis habilidades de diseño UI/UX, integrando las API de IMDb, TMDB y AniList.", role: "Desarrollador y diseñador", tags: ["iOS", "Seguimiento", "Películas"], alt: "Aplicación OmniTrack" } },
-  haze: { es: { description: "Aplicación de grabación de vídeo para macOS con cursor fluido, zooms automáticos, edición de vídeo y más.", role: "Desarrollador y diseñador", tags: ["macOS", "Edición de vídeo", "Grabación de vídeo"], alt: "Aplicación Haze" } },
+  haze: { es: { description: "Aplicación de grabación de vídeo para macOS con cursor fluido, zooms automáticos, edición de vídeo y más.", role: "Desarrollador y diseñador", tags: ["macOS", "Edición", "Grabación de vídeo"], alt: "Aplicación Haze" } },
   tempo: { es: { description: "Una aplicación de partituras sencilla y cuidada para practicar piano.", role: "Desarrollador y diseñador", tags: ["macOS", "Partituras", "Piano"], alt: "Aplicación Tempo" } },
 };
 

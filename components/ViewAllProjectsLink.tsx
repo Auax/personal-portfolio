@@ -26,18 +26,24 @@ export default function ViewAllProjectsLink() {
     sessionStorage.setItem("route-transition", "1");
 
     const page = document.querySelector("[data-page-transition]");
-    if (!page) {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (!page || prefersReducedMotion) {
       router.push("/projects");
       return;
     }
 
     gsap.to(page, {
       opacity: 0,
-      y: -16,
-      filter: "blur(10px)",
-      duration: 0.35,
-      ease: "power2.out",
-      onComplete: () => router.push("/projects"),
+      y: -8,
+      duration: 0.16,
+      ease: "power2.in",
+      overwrite: true,
+      onComplete: () => {
+        router.push("/projects");
+        gsap.set(page, { clearProps: "opacity,transform,filter" });
+      },
     });
   };
 

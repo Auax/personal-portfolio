@@ -16,13 +16,27 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "haze",
+    src: "/projects/haze.jpg",
+    src_detail: "/projects/haze.jpg",
+    alt: "Haze",
+    tags: ["MacOS", "Video Editing", "Video recording"],
+    title: "Haze",
+    description:
+      "Video recording app for MacOS with smooth cursor, automatic zooms, video editing and more.",
+    year: "2026",
+    role: "Developer & Designer",
+    stack: ["Swift", "SwiftUI", "Metal API", "Xcode"],
+    github: "https://github.com/auax/Haze",
+  },
+  {
     slug: "IB-Studio",
     title: "IB Studio",
     src: "/projects/ibstudio.jpg",
-    src_detail: "/projects/ibstudio.jpg",
+    src_detail: "/projects/ibstudio_large.jpg",
     alt: "IB Studio website",
     tags: ["Freelance", "Website", "Design"],
-    featured: true,
+    featured: false,
     description:
       "My freelance website, where I offer web design services to local businesses looking to establish or improve their online presence. It showcases a few client and demo projects. Alongside a clear three-tier pricing structure and a simple contact form to kick off new projects..",
     year: "2026",
@@ -48,23 +62,9 @@ export const projects: Project[] = [
     github: "https://github.com/auax/Omnitrack",
   },
   {
-    slug: "haze",
-    src: "/projects/haze.jpg",
-    src_detail: "/projects/haze.jpg",
-    alt: "Haze",
-    tags: ["MacOS", "Video Editing", "Video recording"],
-    title: "Haze",
-    description:
-      "Video recording app for MacOS with smooth cursor, automatic zooms, video editing and more.",
-    year: "2026",
-    role: "Developer & Designer",
-    stack: ["Swift", "SwiftUI", "Metal API", "Xcode"],
-    github: "https://github.com/auax/Haze",
-  },
-  {
     slug: "tempo",
     src: "/projects/tempo.jpg",
-    src_detail: "/projects/tempo.jpg",
+    src_detail: "/projects/tempo_large.jpg",
     alt: "Tempo",
     tags: ["MacOS","Music Scores", "Piano"],
     title: "Tempo",
