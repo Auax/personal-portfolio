@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import type { MouseEvent } from "react";
 import { usePathname } from "next/navigation";
 import { useLocale } from "@/lib/i18n";
@@ -79,17 +78,6 @@ export default function Footer() {
 
   return (
     <footer className="relative w-full overflow-hidden bg-black">
-      <div className="absolute inset-0 translate-x-[15%] opacity-90 hero-bg-mask">
-        <Image
-          src="/background.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-black/40 to-transparent" />
-
       <div className="container relative z-10 mx-auto pb-8 pt-16 md:pb-10 md:pt-24">
         <div className="border-t border-white/15 pt-8 md:pt-10">
         <div className="grid gap-12 md:grid-cols-12 md:gap-8">
