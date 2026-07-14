@@ -10,6 +10,23 @@ export default function ViewAllProjectsLink() {
   const router = useRouter();
   const { messages } = useLocale();
 
+  const navigateToProjects = () => {
+    const lenis = (
+      window as unknown as {
+        __lenis?: {
+          scrollTo: (
+            target: number,
+            options?: { immediate?: boolean; force?: boolean }
+          ) => void;
+        };
+      }
+    ).__lenis;
+
+    lenis?.scrollTo(0, { immediate: true, force: true });
+    window.scrollTo(0, 0);
+    router.push("/projects", { scroll: false });
+  };
+
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     if (
       event.defaultPrevented ||
@@ -30,7 +47,7 @@ export default function ViewAllProjectsLink() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
     if (!page || prefersReducedMotion) {
-      router.push("/projects");
+      navigateToProjects();
       return;
     }
 
@@ -41,7 +58,7 @@ export default function ViewAllProjectsLink() {
       ease: "power2.in",
       overwrite: true,
       onComplete: () => {
-        router.push("/projects");
+        navigateToProjects();
         gsap.set(page, { clearProps: "opacity,transform,filter" });
       },
     });
