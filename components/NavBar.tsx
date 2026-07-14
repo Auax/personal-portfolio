@@ -197,7 +197,7 @@ export default function NavBar({ onNavigate }: NavBarProps) {
           </div>
 
           <button
-            className="sm:hidden flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full border border-white/15"
+            className="sm:hidden flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-full"
             aria-label={menuOpen ? messages.nav.close : messages.nav.open}
             aria-expanded={menuOpen}
             onClick={() => {
