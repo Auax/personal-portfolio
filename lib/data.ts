@@ -1,8 +1,8 @@
 export interface Project {
   slug: string;
   title: string;
-  src: string;
-  src_detail: string;
+  thumbnail: string;
+  hero: string;
   alt: string;
   tags: string[];
   featured?: boolean;
@@ -17,8 +17,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "haze",
-    src: "/projects/haze.jpg",
-    src_detail: "/projects/haze.jpg",
+    thumbnail: "/projects/haze/hero.jpg",
+    hero: "/projects/haze/hero.jpg",
     alt: "Haze",
     tags: ["MacOS", "Video Editing", "Video recording"],
     title: "Haze",
@@ -30,10 +30,10 @@ export const projects: Project[] = [
     github: "https://github.com/auax/Haze",
   },
   {
-    slug: "IB-Studio",
+    slug: "ib-studio",
     title: "IB Studio",
-    src: "/projects/ibstudio.jpg",
-    src_detail: "/projects/ibstudio_large.jpg",
+    thumbnail: "/projects/ib-studio/thumbnail.jpg",
+    hero: "/projects/ib-studio/hero.jpg",
     alt: "IB Studio website",
     tags: ["Freelance", "Website", "Design"],
     featured: false,
@@ -47,8 +47,8 @@ export const projects: Project[] = [
   },
   {
     slug: "omnitrack",
-    src: "/projects/omnitrack.jpg",
-    src_detail: "/projects/omnitrack-detail.png",
+    thumbnail: "/projects/omnitrack/thumbnail.jpg",
+    hero: "/projects/omnitrack/hero.png",
     alt: "OmniTrack app",
     tags: ["iOS", "Tracking", "Movies"],
     title: "Omnitrack",
@@ -63,8 +63,8 @@ export const projects: Project[] = [
   },
   {
     slug: "tempo",
-    src: "/projects/tempo.jpg",
-    src_detail: "/projects/tempo_large.jpg",
+    thumbnail: "/projects/tempo/thumbnail.jpg",
+    hero: "/projects/tempo/hero.jpg",
     alt: "Tempo",
     tags: ["MacOS","Music Scores", "Piano"],
     title: "Tempo",

@@ -4,7 +4,7 @@ Haze es un grabador de pantalla nativo para macOS, creado para demos de producto
 
 En lugar de limitarse a capturar la pantalla, Haze reúne grabación y posproducción en un único flujo de trabajo. Registra la pantalla y el cursor por separado, propone momentos de zoom útiles y permite ajustar cada movimiento antes de exportar.
 
-<img width="1200" height="943" alt="Editor con línea de tiempo de Haze" src="assets/editor.png" />
+<img width="1200" height="821" alt="Editor con línea de tiempo de Haze" src="/projects/haze/editor.png" />
 
 ## El reto de producto
 
@@ -17,6 +17,10 @@ Mi objetivo era hacer accesibles esos detalles de presentación sin convertir Ha
 El editor utiliza una línea de tiempo en la que la grabación, los datos del cursor y los zooms permanecen sincronizados. Las sugerencias automáticas de zoom ofrecen un buen punto de partida, mientras que los fotogramas clave editables permiten ajustar el encuadre y el ritmo de cada momento.
 
 Haze permite capturar una pantalla, una ventana o una región, además de configurar los fotogramas por segundo y la resolución. Durante la exportación reconstruye un movimiento de cursor fluido y transiciones de zoom cinematográficas para producir un vídeo limpio.
+
+<video src="/projects/haze/demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Ejemplo de una grabación terminada con Haze"></video>
+
+*Un ejemplo de una grabación exportada desde Haze.*
 
 ## Desarrollo nativo
 

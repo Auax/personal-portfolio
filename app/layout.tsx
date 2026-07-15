@@ -30,6 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${instrumentSerif.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-black text-white font-sans">

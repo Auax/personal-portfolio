@@ -1,4 +1,4 @@
-## Un único lugar para todo lo que veo
+## Un lugar para todo
 
 Omnitrack es un proyecto personal para iOS con el que registrar películas, series y anime. Lo creé mientras aprendía Swift y SwiftUI, utilizando un problema cotidiano como oportunidad para explorar el desarrollo de aplicaciones nativas y el diseño de producto.
 

@@ -2,7 +2,7 @@
 
 Tempo is a native macOS companion for practicing piano with digital sheet music. It combines MusicXML scores with live MIDI input, following each performance and providing immediate feedback without pulling attention away from the piece.
 
-I designed the app around a quiet, score-first workspace. The goal was not to add more dashboards to practice, but to make the score itself responsive and useful while learning, repeating a difficult passage, or playing through a complete performance.
+The goal was to make the score itself responsive and useful while learning, repeating a difficult passage, or playing through a complete performance.
 
 ## From static score to active guide
 

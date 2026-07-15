@@ -10,7 +10,7 @@ const PROJECT_BACK_KEY = "project-back";
 
 interface ProjectCardProps {
   slug: string;
-  src: string;
+  thumbnail: string;
   alt: string;
   title?: string;
   tags: readonly string[];
@@ -34,7 +34,7 @@ function TagList({ tags }: { tags: readonly string[] }) {
 
 export default function ProjectCard({
   slug,
-  src,
+  thumbnail,
   alt,
   tags,
   featured = false,
@@ -96,7 +96,7 @@ export default function ProjectCard({
     >
       <Image
         priority
-        src={src}
+        src={thumbnail}
         alt={alt}
         fill
         sizes={
@@ -108,7 +108,7 @@ export default function ProjectCard({
         unoptimized
         className="object-cover object-center scale-[1.02] transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-x-0 bottom-0 h-32 backdrop-blur-[3px] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)]" />
+      <div className="absolute -inset-x-px -bottom-px h-[calc(8rem+1px)] backdrop-blur-[3px] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
       <div
         className={`absolute bottom-4 left-4 ${

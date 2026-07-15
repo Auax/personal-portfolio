@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Suspense, type ReactNode, useRef } from "react";
+import { Suspense, type ReactNode, useLayoutEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,6 +27,22 @@ export default function ProjectDetailsContent({
   const { locale, messages, translateProject } = useLocale();
   const localizedProject = translateProject(project);
   const article = locale === "es" ? articleEs ?? articleEn : articleEn ?? articleEs;
+
+  useLayoutEffect(() => {
+    const lenis = (
+      window as unknown as {
+        __lenis?: {
+          scrollTo: (
+            target: number,
+            options?: { immediate?: boolean; force?: boolean }
+          ) => void;
+        };
+      }
+    ).__lenis;
+
+    lenis?.scrollTo(0, { immediate: true, force: true });
+    window.scrollTo(0, 0);
+  }, []);
 
   useGSAP(
     () => {
@@ -70,7 +86,7 @@ export default function ProjectDetailsContent({
       <div className="relative h-[50vh] w-full overflow-hidden md:h-[65vh]">
         <Image
           data-project-hero-image
-          src={localizedProject.src_detail}
+          src={localizedProject.hero}
           alt={localizedProject.alt}
           fill
           priority

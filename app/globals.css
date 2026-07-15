@@ -105,6 +105,10 @@ body {
   @apply my-10;
 }
 
+.project-article video {
+  @apply my-10 block h-auto w-full;
+}
+
 .project-article pre {
   @apply my-8 overflow-x-auto rounded-2xl border border-zinc-800 bg-zinc-950 p-5 text-sm leading-6 text-zinc-200;
 }

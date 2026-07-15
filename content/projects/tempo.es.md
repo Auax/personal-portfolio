@@ -2,7 +2,7 @@
 
 Tempo es una aplicación nativa para macOS pensada para practicar piano con partituras digitales. Combina partituras MusicXML con entrada MIDI en directo, sigue cada interpretación y ofrece información inmediata sin apartar la atención de la pieza.
 
-Diseñé la aplicación alrededor de un espacio tranquilo en el que la partitura es la protagonista. El objetivo no era añadir más paneles a la práctica, sino hacer que la propia partitura respondiera y resultara útil al aprender, repetir un pasaje difícil o interpretar una pieza completa.
+El objetivo era que la propia partitura respondiera y resultara útil al aprender, repetir un pasaje difícil o interpretar una pieza completa.
 
 ## De partitura estática a guía activa
 

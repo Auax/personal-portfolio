@@ -4,7 +4,7 @@ Haze is a native macOS screen recorder for product demos, tutorials, and visual 
 
 Instead of stopping at screen capture, Haze brings recording and post-production into one focused workflow. It records the screen and cursor separately, suggests useful zoom moments, and lets every movement be refined before export.
 
-<img width="1200" height="943" alt="Haze timeline editor" src="assets/editor.png" />
+<img width="1200" height="821" alt="Haze timeline editor" src="/projects/haze/editor.png" />
 
 ## The product challenge
 
@@ -17,6 +17,10 @@ My goal was to make those presentation details approachable without turning Haze
 The editor uses a timeline-based workflow where recordings, cursor data, and zooms stay synchronized. Automatic zoom suggestions provide a useful starting point, while editable keyframes let the user adjust the framing and pacing of each moment.
 
 Haze supports display, window, and region capture, along with controls for frame rate and resolution. During export, it reconstructs smooth cursor movement and cinematic zoom transitions to produce a clean final video.
+
+<video src="/projects/haze/demo.mp4" autoplay loop muted playsinline preload="metadata" aria-label="Example of a finished Haze recording"></video>
+
+*An example recording exported from Haze.*
 
 ## Building it natively
 

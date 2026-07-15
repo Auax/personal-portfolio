@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,7 +20,7 @@ export default function Portfolio() {
     const containerRef = useRef<HTMLDivElement>(null);
     const { locale } = useLocale();
 
-  const scrollToId = (id: string) => {
+  const scrollToId = useCallback((id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
 
@@ -31,7 +31,21 @@ export default function Portfolio() {
     }
 
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
+  }, []);
+
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+
+    const scrollToHash = () => scrollToId(id);
+    const frame = window.requestAnimationFrame(scrollToHash);
+
+    window.addEventListener("load", scrollToHash, { once: true });
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener("load", scrollToHash);
+    };
+  }, [scrollToId]);
 
     useGSAP(
         () => {
