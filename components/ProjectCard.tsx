@@ -95,6 +95,7 @@ export default function ProjectCard({
       } ${className}`}
     >
       <Image
+        data-project-card-image
         priority
         src={thumbnail}
         alt={alt}
@@ -108,17 +109,22 @@ export default function ProjectCard({
         unoptimized
         className="object-cover object-center scale-[1.02] transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute -inset-x-px -bottom-px h-[calc(8rem+1px)] backdrop-blur-[3px] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
       <div
-        className={`absolute bottom-4 left-4 ${
-          featured ? "md:bottom-6 md:left-6" : "md:bottom-5 md:left-5"
-        }`}
+        data-project-card-overlay
+        className="pointer-events-none absolute inset-0 will-change-opacity"
       >
-        {title && (
-          <span className="text-xl font-medium md:text-lg">— {title}</span>
-        )}
-        <TagList tags={tags} />
+        <div className="absolute -inset-x-px -bottom-px h-[calc(8rem+1px)] backdrop-blur-[3px] [mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_0%,black_55%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        <div
+          className={`absolute bottom-4 left-4 ${
+            featured ? "md:bottom-6 md:left-6" : "md:bottom-5 md:left-5"
+          }`}
+        >
+          {title && (
+            <span className="text-xl font-medium md:text-lg">— {title}</span>
+          )}
+          <TagList tags={tags} />
+        </div>
       </div>
     </Link>
   );

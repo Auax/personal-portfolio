@@ -4,6 +4,8 @@ Tempo is a native macOS companion for practicing piano with digital sheet music.
 
 The goal was to make the score itself responsive and useful while learning, repeating a difficult passage, or playing through a complete performance.
 
+<img width="1199" height="798" alt="Tempo piano practice interface" src="/projects/tempo/screenshot.png" />
+
 ## From static score to active guide
 
 Traditional digital sheet music shows what to play but cannot react to the musician. Tempo tracks the current position, highlights what comes next, and distinguishes correct, missed, and extra notes as they are played on a connected piano or MIDI keyboard.
