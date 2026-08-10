@@ -51,7 +51,7 @@ export default function ProjectArticle({
               {children}
             </a>
           ),
-          img: ({ src, alt, width, height }) => {
+          img: ({ src, alt, width, height, className }) => {
             if (typeof src !== "string") return null;
 
             const parsedWidth = Number(width) || 1200;
@@ -64,7 +64,9 @@ export default function ProjectArticle({
                 width={parsedWidth}
                 height={parsedHeight}
                 sizes="(max-width: 768px) calc(100vw - 4rem), 768px"
-                className="h-auto w-full"
+                className={["h-auto", "w-full", className]
+                  .filter(Boolean)
+                  .join(" ")}
                 unoptimized={src.toLowerCase().endsWith(".gif")}
               />
             );

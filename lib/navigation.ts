@@ -13,7 +13,7 @@ export type NavigationItem = {
 
 export const mainNavigationItems = [
   { labelKey: "home", href: "/", type: "route" },
-  { labelKey: "work", href: "projects", type: "section" },
+  { labelKey: "work", href: "/projects", type: "route" },
   { labelKey: "experience", href: "experience", type: "section" },
   { labelKey: "about", href: "about", type: "section" },
 ] as const satisfies readonly NavigationItem[];

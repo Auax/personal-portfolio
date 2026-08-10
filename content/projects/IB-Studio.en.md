@@ -1,21 +1,36 @@
-## A clearer way to present my freelance work
+## IB Studio
 
-IB Studio is the website I created for my freelance web design practice. Its purpose is to help local businesses quickly understand what I offer, see the quality of my work, and take the next step without unnecessary friction.
+[**IB Studio**](https://www.ibstudio.es/) **is my personal web design and development project, created to offer digital solutions to businesses, professionals, and small companies.** The website is my main tool for presenting my services, showcasing projects, and attracting new clients.
 
-The project gave me the opportunity to approach a website as both its designer and its client. I had to define the positioning, structure the services, write the content, and build an experience that felt credible from the first visit.
+<img width="2048" height="1078" alt="IB Studio homepage" src="/projects/ib-studio/article-hero.webp" />
 
-## Turning services into a simple decision
+I handled the entire process: planning the structure, designing the interface, development, responsive adaptation, and production deployment. The goal was to create a modern, clear, and professional experience, with particular attention to navigation, performance, and converting visitors into potential clients.
 
-Small businesses often know they need a better online presence, but not which type of website or process is right for them. I organized the offer into three clear service tiers so visitors can compare scope and pricing without needing to decode technical language.
+## Branding
 
-Selected client and concept projects provide visual proof of the work, while concise explanations keep the focus on business outcomes. The contact flow is intentionally short, making it easy to start a conversation while an idea is still fresh.
+Alongside development, I created the **IB Studio visual identity**, including the logo, brand imagery, and social media presence. I also created and managed an Instagram profile for the project, designing posts and visual content while maintaining a consistent aesthetic across the website and social channels.
 
-## Design and development
+<div class="project-article-brand-grid">
+  <div class="project-article-brand-card project-article-brand-card--wordmark">
+    <img class="project-article-brand-logo project-article-brand-logo--wordmark" width="2032" height="698" alt="IB Studio horizontal logo" src="/projects/ib-studio/brand-wordmark.webp" />
+  </div>
+  <div class="project-article-brand-card project-article-brand-card--icon">
+    <img class="project-article-brand-logo project-article-brand-logo--icon" width="625" height="625" alt="IB Studio brand icon" src="/projects/ib-studio/brand-icon.webp" />
+  </div>
+</div>
 
-I designed the visual system to feel modern and considered without competing with the portfolio itself. Strong typography, generous spacing, and restrained motion guide visitors through the page and establish a consistent tone.
+## Development
 
-The site is built with Next.js and TypeScript, with responsive behavior and search visibility considered from the beginning. Reusable sections make the content easy to maintain as the studio adds new work and evolves its services.
+I built the project with **Next.js, React, and TypeScript**, organizing the interface through reusable components for sections such as services, projects, pricing, FAQ, and contact. I also incorporated animation and small interaction details to create a more dynamic experience without sacrificing performance.
 
-## The result
+<img width="2048" height="1078" alt="IB Studio projects section" src="/projects/ib-studio/projects.webp" />
 
-IB Studio brings my freelance offer, process, pricing, and portfolio into one coherent experience. More than a showcase, it works as a practical sales tool: it answers the most important early questions and gives potential clients a clear path to get in touch.
+The contact form also has its own backend layer, including data validation, automatic email delivery, bot protection, and request rate limiting to reduce spam and abuse.
+
+## SEO
+
+I also worked on areas beyond visual design, including **technical SEO, metadata, structured data, and analytics**, so the website would be prepared as a real product rather than only a visual demonstration.
+
+<img width="2048" height="1021" alt="IB Studio plans and pricing" src="/projects/ib-studio/pricing.webp" />
+
+IB Studio reflects how I like to work: starting from a real need, considering both the user and the business goals, and building a polished solution from beginning to end, both visually and technically.

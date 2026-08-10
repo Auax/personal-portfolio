@@ -105,6 +105,77 @@ body {
   @apply my-10;
 }
 
+.project-article-mobile-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-block: 2.5rem;
+}
+
+.project-article-mobile-grid img {
+  margin-block: 0;
+  border-radius: 1rem;
+}
+
+@media (min-width: 640px) {
+  .project-article-mobile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.project-article-brand-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-block: 2.5rem;
+}
+
+.project-article-brand-card {
+  display: flex;
+  aspect-ratio: 4 / 3;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #f4f4f5;
+  padding: 2rem;
+}
+
+.project-article-brand-card--wordmark {
+  aspect-ratio: 16 / 7;
+  align-self: center;
+  padding: 0.75rem 1rem;
+}
+
+.project-article-brand-card--icon {
+  aspect-ratio: auto;
+  align-self: center;
+  background: transparent;
+  padding: 0;
+}
+
+.project-article-brand-card img {
+  width: auto;
+  height: auto;
+  margin-block: 0;
+  object-fit: contain;
+}
+
+.project-article-brand-card .project-article-brand-logo--wordmark {
+  width: 78%;
+}
+
+.project-article-brand-card .project-article-brand-logo--icon {
+  width: 40%;
+  max-height: 54%;
+}
+
+@media (min-width: 640px) {
+  .project-article-brand-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .project-article video {
   @apply my-10 block h-auto w-full;
 }

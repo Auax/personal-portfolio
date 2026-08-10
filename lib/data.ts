@@ -74,7 +74,35 @@ export const projects: Project[] = [
     role: "Developer & Designer",
     stack: ["Swift", "SwiftUI", "Metal API", "Xcode"],
     github: "https://github.com/auax/Tempo",
-  }
+  },
+  {
+    slug: "personal-portfolio",
+    title: "Personal Portfolio",
+    thumbnail: "/projects/personal-portfolio/mockup.jpg",
+    hero: "/projects/personal-portfolio/mockup.jpg",
+    alt: "Personal portfolio homepage",
+    tags: ["Portfolio", "Web", "Bilingual"],
+    description:
+      "A personal portfolio built with Next.js, React, and TypeScript, featuring scroll animations, responsive design, dynamic project pages, and support for English and Spanish.",
+    year: "2026",
+    role: "Developer & Designer",
+    stack: ["Next.js", "React", "TypeScript"],
+    github: "https://github.com/Auax/personal-portfolio",
+    website: "https://ibaifarina.dev",
+  },
+  {
+    slug: "ib-studio-crm",
+    title: "IB Studio CRM",
+    thumbnail: "/projects/ib-studio-crm/thumbnail.jpg",
+    hero: "/projects/ib-studio-crm/thumbnail.jpg",
+    alt: "IB Studio CRM dashboard",
+    tags: ["Full-stack", "CRM", "SaaS"],
+    description:
+      "A full-stack CRM for managing lead generation and client outreach, with dashboards, filters, an interactive map, authentication, and per-user data security.",
+    year: "2026",
+    role: "Developer & Designer",
+    stack: ["Next.js", "TypeScript", "Supabase", "PostgreSQL"],
+  },
 ] as const;
 
 export const HOMEPAGE_PROJECTS_LIMIT = 3;

@@ -62,6 +62,8 @@ const projectTranslations: Record<string, { es: { description: string; role: str
   omnitrack: { es: { description: "Un proyecto personal para llevar un registro de películas, series y anime, con especial atención a una interfaz fácil de usar. Lo creé para aprender SwiftUI y Swift y mejorar mis habilidades de diseño UI/UX, integrando las API de IMDb, TMDB y AniList.", role: "Desarrollador y diseñador", tags: ["iOS", "Seguimiento", "Películas"], alt: "Aplicación OmniTrack" } },
   haze: { es: { description: "Aplicación de grabación de vídeo para macOS con cursor fluido, zooms automáticos, edición de vídeo y más.", role: "Desarrollador y diseñador", tags: ["macOS", "Edición", "Grabación de vídeo"], alt: "Aplicación Haze" } },
   tempo: { es: { description: "Una aplicación de partituras sencilla y cuidada para practicar piano.", role: "Desarrollador y diseñador", tags: ["macOS", "Partituras", "Piano"], alt: "Aplicación Tempo" } },
+  "personal-portfolio": { es: { description: "Portfolio personal desarrollado con Next.js, React y TypeScript, con animaciones al hacer scroll, diseño responsive, proyectos dinámicos y soporte en español e inglés.", role: "Desarrollador y diseñador", tags: ["Portfolio", "Web", "Bilingüe"], alt: "Página de inicio del portfolio personal" } },
+  "ib-studio-crm": { es: { description: "CRM full-stack para gestionar la prospección y captación de clientes, con dashboard, filtros, mapa interactivo, autenticación y seguridad de datos por usuario.", role: "Desarrollador y diseñador", tags: ["Full-stack", "CRM", "SaaS"], alt: "Dashboard del CRM de IB Studio" } },
 };
 
 type LocaleContextValue = {
