@@ -42,7 +42,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Developer & Designer",
     stack: ["Next.js", "TypeScript", "SEO"],
-    github: "https://github.com/auax/freelancePortfolio",
+    github: "https://github.com/Auax/FreelanceLanding",
     website: "https://ibstudio.es",
   },
   {
