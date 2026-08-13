@@ -59,7 +59,6 @@ export default function ViewAllProjectsLink() {
       overwrite: true,
       onComplete: () => {
         navigateToProjects();
-        gsap.set(page, { clearProps: "opacity,transform,filter" });
       },
     });
   };

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { MouseEvent } from "react";
 import { PhosphorIcon } from "@/components/PhosphorIcons";
+import { getCvForLocale } from "@/lib/cv";
 import { useLocale } from "@/lib/i18n";
 
 interface HeroSectionProps {
@@ -10,7 +11,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onNavigate }: HeroSectionProps) {
-    const { messages } = useLocale();
+    const { locale, messages } = useLocale();
+    const cv = getCvForLocale(locale);
 
     const handleProjectsClick = (event: MouseEvent<HTMLAnchorElement>) => {
         if (
@@ -53,13 +55,26 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                         {messages.hero.location}
                     </p>
                 </div>
-                <div data-animate="hero-cta" className="mt-8 text-center">
+                <div data-animate="hero-cta" className="mt-8 flex flex-wrap items-center justify-center gap-3 text-center">
                     <a
                         href="#projects"
                         onClick={handleProjectsClick}
                         className="inline-flex items-center justify-center rounded-full bg-blue-600 hover:bg-blue-500 transition-colors text-white text-sm font-medium px-6 py-3"
                     >
                         {messages.hero.cta}
+                    </a>
+                    <a
+                        href={cv.href}
+                        download={cv.filename}
+                        className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-black/20 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:border-white/60 hover:bg-white/10"
+                    >
+                        <PhosphorIcon
+                            name="DownloadSimple"
+                            size={18}
+                            weight="bold"
+                            aria-hidden="true"
+                        />
+                        {messages.hero.downloadCv}
                     </a>
                 </div>
             </div>

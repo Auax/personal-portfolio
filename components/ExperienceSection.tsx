@@ -10,7 +10,7 @@ export default function ExperienceSection() {
     <section className="w-full container mx-auto py-16 md:py-24" id="experience">
       <h2
         data-animate="section-heading"
-        className="text-5xl md:text-7xl font-serif mb-16"
+        className="mb-16 text-5xl font-serif md:text-7xl"
       >
         {messages.experience.title}
       </h2>

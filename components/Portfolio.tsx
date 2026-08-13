@@ -63,12 +63,13 @@ export default function Portfolio() {
                 ease: "power3.out",
             });
 
-            gsap.from("[data-animate='hero-cta']", {
+            gsap.from("[data-animate='hero-cta'] > *", {
                 y: 20,
                 opacity: 0,
                 filter: "blur(30px)",
                 duration: 0.7,
                 delay: 0.5,
+                stagger: 0.12,
                 ease: "power3.out",
             });
 

@@ -7,7 +7,7 @@ export type Locale = "en" | "es";
 const messages = {
   en: {
     nav: { home: "Home", work: "My work", experience: "Experience", about: "About me", contact: "Contact", open: "Open menu", close: "Close menu", language: "Language" },
-    hero: { greeting: "Hi! I'm Ibai Farina,", roleAccent: "full stack", role: "developer", location: "I'm based in Barcelona, Spain", cta: "View my work" },
+    hero: { greeting: "Hi! I'm Ibai Farina,", roleAccent: "full stack", role: "developer", location: "I'm based in Barcelona, Spain", cta: "View my work", downloadCv: "Download CV" },
     projects: { title: "Projects", intro: "A collection of work across design, development, and product.", viewAll: "View all projects" },
     experience: {
       title: "Experience",
@@ -32,7 +32,7 @@ const messages = {
   },
   es: {
     nav: { home: "Inicio", work: "Proyectos", experience: "Experiencia", about: "Sobre mí", contact: "Contacto", open: "Abrir menú", close: "Cerrar menú", language: "Idioma" },
-    hero: { greeting: "¡Hola! Soy Ibai Farina,", roleAccent: "desarrollador", role: "full stack", location: "Basado en Barcelona, España", cta: "Ver mi trabajo" },
+    hero: { greeting: "¡Hola! Soy Ibai Farina,", roleAccent: "desarrollador", role: "full stack", location: "Basado en Barcelona, España", cta: "Ver mi trabajo", downloadCv: "Descargar CV" },
     projects: { title: "Proyectos", intro: "Una selección de trabajos de diseño, desarrollo y producto.", viewAll: "Ver todos los proyectos" },
     experience: {
       title: "Experiencia",

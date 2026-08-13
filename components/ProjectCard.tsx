@@ -78,7 +78,6 @@ export default function ProjectCard({
       overwrite: true,
       onComplete: () => {
         router.push(projectHref);
-        gsap.set(page, { clearProps: "opacity,transform,filter" });
       },
     });
   };
