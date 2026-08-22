@@ -27,7 +27,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Developer & Designer",
     stack: ["Swift", "SwiftUI", "Metal API", "Xcode"],
-    github: "https://github.com/auax/Haze",
+    github: "https://github.com/ibaifarina/Haze",
   },
   {
     slug: "ib-studio",
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Developer & Designer",
     stack: ["Next.js", "TypeScript", "SEO"],
-    github: "https://github.com/Auax/FreelanceLanding",
+    github: "https://github.com/ibaifarina/FreelanceLanding",
     website: "https://ibstudio.es",
   },
   {
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Developer & Designer",
     stack: ["Swift", "SwiftUI"],
-    github: "https://github.com/auax/Omnitrack",
+    github: "https://github.com/ibaifarina/Omnitrack",
   },
   {
     slug: "tempo",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Developer & Designer",
     stack: ["Swift", "SwiftUI", "Metal API", "Xcode"],
-    github: "https://github.com/auax/Tempo",
+    github: "https://github.com/ibaifarina/Tempo",
   },
   {
     slug: "personal-portfolio",
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     year: "2026",
     role: "Developer & Designer",
     stack: ["Next.js", "React", "TypeScript"],
-    github: "https://github.com/Auax/personal-portfolio",
+    github: "https://github.com/ibaifarina/personal-portfolio",
     website: "https://ibaifarina.dev",
   },
   {

@@ -114,7 +114,7 @@ export default function Footer() {
                 {messages.footer.elsewhere}
               </p>
               <a
-                href="https://github.com/auax"
+                href="https://github.com/ibaifarina"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
