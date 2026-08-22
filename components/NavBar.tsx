@@ -290,13 +290,29 @@ export default function NavBar({ onNavigate }: NavBarProps) {
               </a>
             ))}
             {languageSelector()}
-            <a
-              href={getNavigationHref(contactLink, pathname)}
-              className="ml-1 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-black transition-colors hover:bg-white/85"
-              onClick={(event) => handleLinkClick(contactLink, event)}
-            >
-              {contactLink.label}
-            </a>
+            <div className="ml-1 flex items-center gap-2">
+              <a
+                href={getNavigationHref(contactLink, pathname)}
+                className="rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-black transition-colors hover:bg-white/85"
+                onClick={(event) => handleLinkClick(contactLink, event)}
+              >
+                {contactLink.label}
+              </a>
+              <a
+                href="https://github.com/ibaifarina"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 text-zinc-400 transition-[color,border-color,background-color] hover:border-white/30 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
+                <PhosphorIcon
+                  name="GithubLogo"
+                  size={17}
+                  weight="fill"
+                  aria-hidden="true"
+                />
+              </a>
+            </div>
           </div>
 
           <button
