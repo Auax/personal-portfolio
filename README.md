@@ -1,6 +1,6 @@
 <div align="center">
 
-# Ibai Fariña — Personal Portfolio
+# Ibai Farina — Personal Portfolio
 
 **A bilingual, animation-rich portfolio where the experience is part of the work.**
 
