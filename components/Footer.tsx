@@ -113,28 +113,49 @@ export default function Footer() {
               <p className="mb-4 text-xs uppercase tracking-[0.18em] text-zinc-600">
                 {messages.footer.elsewhere}
               </p>
-              <a
-                href="https://github.com/ibaifarina"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
-              >
-                GitHub
-                <svg
-                  aria-hidden="true"
-                  viewBox="0 0 16 16"
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  fill="none"
-                >
-                  <path
-                    d="M4 12 12 4M6 4h6v6"
-                    stroke="currentColor"
-                    strokeWidth="1.25"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </a>
+              <div className="flex flex-col items-start gap-2.5">
+                {[
+                  {
+                    label: "LinkedIn",
+                    href: "https://www.linkedin.com/in/ibai-farina-del-olmo-3bb55b243/",
+                    external: true,
+                  },
+                  {
+                    label: "GitHub",
+                    href: "https://github.com/ibaifarina",
+                    external: true,
+                  },
+                  {
+                    label: "ibaifo8@gmail.com",
+                    href: "mailto:ibaifo8@gmail.com",
+                    external: false,
+                  },
+                ].map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target={social.external ? "_blank" : undefined}
+                    rel={social.external ? "noopener noreferrer" : undefined}
+                    className="group inline-flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+                  >
+                    {social.label}
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 16 16"
+                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                      fill="none"
+                    >
+                      <path
+                        d="M4 12 12 4M6 4h6v6"
+                        stroke="currentColor"
+                        strokeWidth="1.25"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

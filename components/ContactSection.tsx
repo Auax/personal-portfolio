@@ -1,6 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { EnvelopeSimple } from "@phosphor-icons/react";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { useLocale } from "@/lib/i18n";
 
 type SubmissionState = "idle" | "submitting" | "success" | "error" | "unconfigured";
@@ -69,6 +71,37 @@ export default function ContactSection() {
           <p data-animate="fade-up" className="text-zinc-400 text-base">
             {messages.contact.intro}
           </p>
+          <div
+            data-animate="fade-up"
+            className="mt-8 flex flex-col items-start gap-3"
+            aria-label={messages.contact.socials}
+          >
+            <a
+              href="https://www.linkedin.com/in/ibai-farina-del-olmo-3bb55b243/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-400 underline decoration-zinc-700 underline-offset-4 transition-[color,text-decoration-color] hover:text-white hover:decoration-zinc-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <BsLinkedin size={17} aria-hidden="true" />
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/ibaifarina"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-400 underline decoration-zinc-700 underline-offset-4 transition-[color,text-decoration-color] hover:text-white hover:decoration-zinc-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <BsGithub size={18} aria-hidden="true" />
+              GitHub
+            </a>
+            <a
+              href="mailto:ibaifo8@gmail.com"
+              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-400 underline decoration-zinc-700 underline-offset-4 transition-[color,text-decoration-color] hover:text-white hover:decoration-zinc-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            >
+              <EnvelopeSimple size={19} weight="regular" aria-hidden="true" />
+              ibaifo8@gmail.com
+            </a>
+          </div>
         </div>
 
         <form

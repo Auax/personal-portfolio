@@ -5,6 +5,7 @@ import { Suspense, type ReactNode, useLayoutEffect, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BsGithub } from "react-icons/bs";
 import ProjectBackLink from "@/components/ProjectBackLink";
 import RouteTransitionIn from "@/components/RouteTransitionIn";
 import { PhosphorIcon } from "@/components/PhosphorIcons";
@@ -147,9 +148,13 @@ export default function ProjectDetailsContent({
         )}
         <div className="mt-12 flex flex-wrap gap-4">
           {localizedProject.github && (
-            <a href={localizedProject.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-neutral-300">
+            <a href={localizedProject.github} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition-colors hover:bg-neutral-300">
               GitHub
-              <Image src="/icons/github/GitHub_Invertocat_Black.svg" alt="GitHub" width={20} height={20} />
+              <BsGithub
+                size={19}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110"
+              />
             </a>
           )}
           {localizedProject.website && (
