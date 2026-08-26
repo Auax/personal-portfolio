@@ -1,8 +1,8 @@
 <div align="center">
 
-# Ibai Farina — Personal Portfolio
+# Ibai Farina's Portfolio
 
-**A bilingual, animation-rich portfolio where the experience is part of the work.**
+**My personal site, built to share my projects and the work behind them.**
 
 [Visit ibaifarina.dev](https://ibaifarina.dev) · [Explore the projects](https://ibaifarina.dev/projects)
 
@@ -22,33 +22,33 @@
 
 ## About the project
 
-[ibaifarina.dev](https://ibaifarina.dev) is my personal portfolio as a software developer and Data Science student. I designed and developed it from scratch as a place to introduce myself, share the technologies I work with, and showcase the projects I build.
+[ibaifarina.dev](https://ibaifarina.dev) is my personal portfolio as a software developer and Data Science student. I built it from scratch to have one place where I can introduce myself, talk about the tools I use, and share the projects I work on.
 
-I wanted it to be more than a page of links. The website itself demonstrates how I approach development: combining a clear visual identity, a polished interface, and fluid interactions without losing usability or performance.
+I did not want it to be just a page of links. I wanted the site itself to show how I like to work, from the overall visual style to the smaller interactions and animations.
 
 ## Highlights
 
-- **Project-driven content** — Every project has a dedicated route with its goals, my role, technologies, imagery, and relevant links.
-- **Long-form case studies** — Projects can include English and Spanish Markdown articles that are loaded automatically on their detail pages.
-- **Purposeful motion** — GSAP and ScrollTrigger power entrance animations, parallax, scroll-linked effects, and progressive reveals.
-- **Smooth navigation** — Lenis provides fluid scrolling across the site and stays synchronized with GSAP's animation loop.
-- **Bilingual experience** — The interface and project content are available in English and Spanish, with the selected language saved in the browser.
-- **Responsive by design** — Navigation, layout, and motion are adapted for mobile rather than simply scaled down from desktop.
-- **Accessible animation** — Motion-heavy behavior respects the user's `prefers-reduced-motion` setting.
+- **Project pages:** Each project has its own page with its goals, my role, the tools I used, images, and relevant links.
+- **Markdown case studies:** I can add longer articles in English and Spanish without building each page by hand.
+- **Animation:** GSAP and ScrollTrigger handle entrance animations, parallax, scroll effects, and content reveals.
+- **Smooth scrolling:** Lenis runs across the site and stays in sync with the GSAP animation loop.
+- **English and Spanish:** Both the interface and project content are translated. The site remembers the selected language while you browse.
+- **Responsive layouts:** The navigation, layout, and animations have specific behavior for smaller screens.
+- **Reduced motion:** The site checks the user's `prefers-reduced-motion` setting before running motion-heavy effects.
 
 ## Design and development
 
-The interface was initially planned in Figma and developed as a set of reusable React components for projects, experience, personal information, skills, and contact details. The visual direction is minimalist but expressive, with particular attention to typography, imagery, spacing, and transitions between sections.
+I planned the first version in Figma, then split the site into reusable React components for projects, experience, personal information, skills, and contact details. I kept the interface fairly minimal and spent most of the design time on typography, images, spacing, and transitions.
 
-Motion supports the content instead of competing with it. GSAP handles the richer sequences and scroll-linked effects, while Lenis keeps movement consistent between the home page, project index, and individual project pages.
+GSAP handles the entrance sequences and scroll-linked effects. Lenis keeps scrolling consistent on the home page, the project index, and each project page. These effects are disabled or simplified when the device has reduced motion enabled.
 
 <img width="100%" alt="Projects section of the portfolio on desktop" src="./public/projects/personal-portfolio/projects.webp" />
 
 ## Project and content system
 
-Projects are generated from a shared data structure and rendered through dynamic Next.js routes. This makes it straightforward to add new work while keeping cards and detail pages consistent.
+Project details live in a shared data file, and Next.js generates the individual pages from dynamic routes. This keeps the cards and detail pages consistent and means I do not need to rebuild the layout whenever I add a project.
 
-Each project can also include localized Markdown files under `content/projects/`. The corresponding article is loaded on the server and rendered on the project page, allowing case studies to go beyond a screenshot and a technology list with development notes, design decisions, features, and technical details.
+Projects can also have English and Spanish Markdown files under `content/projects/`. The site loads the matching article on the server and adds it to the project page. I use these articles when a screenshot and a list of technologies are not enough to explain the process behind a project.
 
 <img width="100%" alt="Detailed project page with its Markdown case study" src="./public/projects/personal-portfolio/project-detail.webp" />
 
@@ -116,7 +116,7 @@ public/
 
 ## Responsive experience
 
-The portfolio keeps the same visual identity across screen sizes while adjusting its navigation, composition, and animations for smaller devices.
+On smaller screens, the site changes the navigation, layout, and animation behavior instead of squeezing the desktop version into a narrower space.
 
 <p align="center">
   <img width="48%" alt="Project listing adapted for mobile" src="./public/projects/personal-portfolio/mobile-projects.webp" />
@@ -125,4 +125,4 @@ The portfolio keeps the same visual identity across screen sizes while adjusting
 
 ## Result
 
-This portfolio brings together the areas I care about most: frontend development, UI/UX, animation, product thinking, and attention to detail. Its goal is not only to list the technologies I know, but to let the portfolio experience demonstrate what I can design and develop.
+This is probably the project that represents me best. It combines frontend development, UI/UX, animation, and the small details I enjoy working on. Rather than only saying what I know, the site gives me a place to show it.
